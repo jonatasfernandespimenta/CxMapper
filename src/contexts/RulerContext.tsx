@@ -1,17 +1,18 @@
 "use client";
 
 import AddAction from "@/ui/components/organisms/AddAction";
-import { uuid } from "uuidv4";
 import React, { useState } from "react";
+import { IActionProps, ItemTypes } from "@/@types/IActionProps";
 
-interface IItem {
+export interface IItem<T extends ItemTypes> extends IActionProps<T> {
   id: string;
   element: JSX.Element;
+  type: ItemTypes;
 }
 
 interface IRulerContextType {
-  items: IItem[];
-  setItems: (items: IItem[]) => void;
+  items: IItem<ItemTypes>[];
+  setItems: (items: IItem<ItemTypes>[]) => void;
   isAddActionMenuOpen: boolean;
   setIsAddActionMenuOpen: (isAddActionMenuOpen: boolean) => void;
 }
@@ -27,8 +28,8 @@ export const RulerContext = React.createContext<IRulerContextType>(
 export default function RulerContextProvider({
   children,
 }: IRulerContextProvider) {
-  const [items, setItems] = useState<IItem[]>([
-    { id: uuid(), element: <AddAction /> },
+  const [items, setItems] = useState<IItem<ItemTypes>[]>([
+    { id: "add", element: <AddAction />, props: null, type: "add" },
   ]);
   const [isAddActionMenuOpen, setIsAddActionMenuOpen] =
     useState<boolean>(false);

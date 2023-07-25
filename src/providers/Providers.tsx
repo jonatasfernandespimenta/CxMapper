@@ -1,9 +1,9 @@
-import RulerContextProvider from "@/contexts/RulerContext";
+import MapContextProvider from "@/contexts/MapContext";
 
 interface IProviders {
   children: JSX.Element | JSX.Element[];
 }
 
 export default function Providers({ children }: IProviders) {
-  return <RulerContextProvider>{children}</RulerContextProvider>;
+  return <MapContextProvider>{children}</MapContextProvider>;
 }

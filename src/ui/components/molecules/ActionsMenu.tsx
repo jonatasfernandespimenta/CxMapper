@@ -1,7 +1,7 @@
 "use client";
 
 import MenuOption from "../atoms/MenuOption";
-import { useRulerData } from "@/contexts/RulerContext";
+import { IItem, useRulerData } from "@/contexts/RulerContext";
 import {
   IActionsMenuOption,
   actionsMenuOptions,
@@ -9,20 +9,28 @@ import {
 import { uuid } from "uuidv4";
 import Action from "../atoms/Action";
 import Condition from "./Condition";
+import { useMapData } from "@/contexts/MapContext";
 
 export default function ActionsMenu() {
-  const { items, setItems, setIsAddActionMenuOpen } = useRulerData();
+  const { items, setItems } = useRulerData();
 
-  function handleActionSelection(action: IActionsMenuOption) {
-    const updatedItems = [
+  const { setActiveItem } = useMapData();
+  const { setIsAddActionMenuOpen } = useRulerData();
+
+  function handleActionSelection({ icon, text, type }: IActionsMenuOption) {
+    const itemId = uuid();
+
+    const updatedItems: IItem<typeof type>[] = [
       ...items,
       {
-        id: uuid(),
+        id: itemId,
+        props: null,
+        type,
         element:
-          action.text === "Condition" ? (
-            <Condition condition="idade > 10" />
+          text === "Condition" ? (
+            <Condition condition="" />
           ) : (
-            <Action icon={action.icon} />
+            <Action icon={icon} />
           ),
       },
     ];
@@ -30,6 +38,7 @@ export default function ActionsMenu() {
     const addActionButton = updatedItems.splice(updatedItems.length - 2, 1)[0];
     updatedItems.push(addActionButton);
 
+    setActiveItem(itemId);
     setItems(updatedItems);
     setIsAddActionMenuOpen(false);
   }

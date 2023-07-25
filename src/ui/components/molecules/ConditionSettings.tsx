@@ -1,9 +1,39 @@
 "use client";
 
+import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useState } from "react";
+import Condition from "./Condition";
 
-export default function ConditionSettings() {
-  const [condition, setCondition] = useState(">");
+interface IConditionSettings {
+  item: IItem<"condition">;
+}
+
+export default function ConditionSettings({ item }: IConditionSettings) {
+  const { items, setItems } = useRulerData();
+
+  const [condition, setCondition] = useState<string>(">");
+  const [variable, setVariable] = useState("Nome");
+  const [value, setValue] = useState("");
+
+  function saveProps() {
+    const updatedItem: IItem<"condition"> = {
+      ...item,
+      props: {
+        // @ts-ignore
+        condition,
+        variable,
+        value,
+      },
+      element: <Condition condition={`${variable} ${condition} ${value}`} />,
+    };
+
+    const updatedItems = [...items];
+
+    const itemIndex = updatedItems.findIndex((i) => i.id === item.id);
+    updatedItems[itemIndex] = updatedItem;
+
+    setItems(updatedItems);
+  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -12,8 +42,9 @@ export default function ConditionSettings() {
       <div>
         <p>Se</p>
 
-        <select>
-          <option>Nome</option>
+        <select value={variable} onChange={(e) => setVariable(e.target.value)}>
+          <option value="Nome">Nome</option>
+          <option value="Idade">Idade</option>
         </select>
       </div>
 
@@ -32,8 +63,14 @@ export default function ConditionSettings() {
 
       <div className="w-full">
         <p>{condition === "=" ? "A" : "Que"}</p>
-        <input className="w-full rounded-md border-solid border-[#DADCE0] border-[1px]" />
+        <input
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          className="w-full rounded-md border-solid border-[#DADCE0] border-[1px]"
+        />
       </div>
+
+      <button onClick={saveProps}>Salvar</button>
     </div>
   );
 }

@@ -2,7 +2,6 @@
 
 import AddActionButton from "../atoms/AddActionButton";
 import ActionsMenu from "../molecules/ActionsMenu";
-import { useDetectClickOutside } from "react-detect-click-outside";
 import { useRulerData } from "@/contexts/RulerContext";
 
 export default function AddAction() {
@@ -12,11 +11,9 @@ export default function AddAction() {
     setIsAddActionMenuOpen(!isAddActionMenuOpen);
   }
 
-  const ref = useDetectClickOutside({ onTriggered: closeDropDown });
-
   return (
     <div className="flex flex-col">
-      <AddActionButton ref={ref} onClick={closeDropDown} />
+      <AddActionButton onClick={closeDropDown} />
 
       {isAddActionMenuOpen && <ActionsMenu />}
     </div>
