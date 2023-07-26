@@ -3,6 +3,8 @@
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useState } from "react";
 import Condition from "./Condition";
+import Select from "../atoms/Select";
+import Input from "../atoms/Input";
 
 interface IConditionSettings {
   item: IItem<"condition">;
@@ -24,7 +26,6 @@ export default function ConditionSettings({ item }: IConditionSettings) {
         variable,
         value,
       },
-      element: <Condition condition={`${variable} ${condition} ${value}`} />,
     };
 
     const updatedItems = [...items];
@@ -36,37 +37,36 @@ export default function ConditionSettings({ item }: IConditionSettings) {
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <h2>Condição</h2>
-
+    <div className="flex flex-col gap-4 text-black">
       <div>
-        <p>Se</p>
+        <p>If</p>
 
-        <select value={variable} onChange={(e) => setVariable(e.target.value)}>
+        <Select value={variable} onChange={(e) => setVariable(e.target.value)}>
           <option value="Nome">Nome</option>
           <option value="Idade">Idade</option>
-        </select>
+        </Select>
       </div>
 
       <div>
-        <select
+        <p>Is</p>
+
+        <Select
           value={condition}
           onChange={(e) => setCondition(e.target.value)}
         >
-          <option value={">"}>Maior</option>
-          <option value={"<"}>Menor</option>
-          <option value={">="}>Maior ou igual</option>
-          <option value={"<="}>Menor ou igual</option>
-          <option value="=">Igual</option>
-        </select>
+          <option value={">"}>Greater</option>
+          <option value={"<"}>Less</option>
+          <option value={">="}>Greater or equal</option>
+          <option value={"<="}>Lesser or equal</option>
+          <option value="=">Equal</option>
+        </Select>
       </div>
 
       <div className="w-full">
-        <p>{condition === "=" ? "A" : "Que"}</p>
-        <input
+        <p>{condition === "=" ? "To" : "Than"}</p>
+        <Input
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="w-full rounded-md border-solid border-[#DADCE0] border-[1px]"
         />
       </div>
 

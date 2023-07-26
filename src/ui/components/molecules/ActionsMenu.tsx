@@ -10,6 +10,8 @@ import { uuid } from "uuidv4";
 import Action from "../atoms/Action";
 import Condition from "./Condition";
 import { useMapData } from "@/contexts/MapContext";
+import Email from "./Email";
+import { selectElement } from "@/ui/utils/selectElement";
 
 export default function ActionsMenu() {
   const { items, setItems } = useRulerData();
@@ -26,12 +28,12 @@ export default function ActionsMenu() {
         id: itemId,
         props: null,
         type,
-        element:
-          text === "Condition" ? (
-            <Condition condition="" />
-          ) : (
-            <Action icon={icon} />
-          ),
+        element: selectElement({ icon, text, itemId })
+          // text === "Condition" ? (
+          //   <Condition condition="" itemId={itemId} />
+          // ) : (
+          //   text === 'E-Mail' ? <Email itemId={itemId} /> : <Action actionName={text} icon={icon} />
+          // ),
       },
     ];
 

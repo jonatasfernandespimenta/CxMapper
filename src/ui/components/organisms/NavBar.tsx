@@ -1,6 +1,6 @@
 export default function NavBar() {
   return (
-    <nav className="bg-gray-600 w-screen fixed top-0 p-2">
+    <nav className="bg-gray-700 w-screen font-semibold fixed top-0 p-3 text-white">
       <p>CUSTOMER EXPERIENCE MAPPING</p>
     </nav>
   );

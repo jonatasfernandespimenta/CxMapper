@@ -17,7 +17,10 @@ export interface SmsProps {
 export interface EmailProps {
   from: string;
   to: string;
+  subject: string;
   message: string;
+  attachment?: any;
+  templateId?: number
 }
 
 export type ItemTypes = "condition" | "email" | "whatsapp" | "sms" | "add";

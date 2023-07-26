@@ -1,31 +1,19 @@
 "use client";
 
 import { useRulerData } from "@/contexts/RulerContext";
-import SideMenu from "./SideMenu";
-import { useMapData } from "@/contexts/MapContext";
 
 export default function Ruler() {
   const { items } = useRulerData();
-  const { setActiveItem, activeItem } = useMapData();
-
-  function handleItemSelection(id: string) {
-    if (id !== "add") {
-      setActiveItem(id);
-    }
-  }
 
   return (
     <>
-      {activeItem && <SideMenu id={activeItem} />}
-
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row mr-40 mb-40">
         {items.map(({ element, id }) => (
-          <div key={id} className="flex flex-row items-center">
-            <div className="w-10 h-1 bg-green-500" />
+          <div key={id} className="flex flex-row ">
+            <div className="w-10 h-1 bg-green-500 rounded-lg" />
 
             <div
-              className="text-green-500"
-              onClick={() => handleItemSelection(id)}
+              className="text-green-500 -mt-6"
             >
               {element}
             </div>
