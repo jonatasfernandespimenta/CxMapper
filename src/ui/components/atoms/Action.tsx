@@ -15,11 +15,13 @@ export default function Action({ icon, actionName, children }: IAction) {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   return (
-    <div
-      onClick={() => setIsVisible(!isVisible)}
-      className="w-60 p-4 shadow rounded-md border-solid border-[1px] flex justify-center flex-col gap-4 cursor-pointer"
-    >
-      <ActionHeader icon={icon} isActive={isVisible} actionName={actionName} />
+    <div className="w-56 text-sm p-4 shadow rounded-md border-solid border-[1px] flex justify-center flex-col gap-4">
+      <ActionHeader
+        onClick={() => setIsVisible(!isVisible)}
+        icon={icon}
+        isActive={isVisible}
+        actionName={actionName}
+      />
 
       {isVisible && children}
     </div>

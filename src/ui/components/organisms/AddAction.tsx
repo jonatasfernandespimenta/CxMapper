@@ -1,6 +1,5 @@
 "use client";
 
-import { useMapData } from "@/contexts/MapContext";
 import AddActionButton from "../atoms/AddActionButton";
 import ActionsMenu from "../molecules/ActionsMenu";
 import { useRulerData } from "@/contexts/RulerContext";
@@ -13,7 +12,7 @@ export default function AddAction() {
   }
 
   return (
-    <div className="flex flex-col mt-3">
+    <div className="flex flex-col rounded-full bg-green-200 p-1.5 mt-2 border-solid border-green-500 border-2 items-center">
       <AddActionButton onClick={closeDropDown} />
 
       {isAddActionMenuOpen && <ActionsMenu />}

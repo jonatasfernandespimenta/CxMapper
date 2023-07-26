@@ -2,9 +2,10 @@
 
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useState } from "react";
-import Condition from "./Condition";
 import Select from "../atoms/Select";
 import Input from "../atoms/Input";
+
+import { FaPlus } from "react-icons/fa";
 
 interface IConditionSettings {
   item: IItem<"condition">;
@@ -38,36 +39,33 @@ export default function ConditionSettings({ item }: IConditionSettings) {
 
   return (
     <div className="flex flex-col gap-4 text-black">
-      <div>
-        <p>If</p>
-
+      <div className="flex flex-col gap-2">
         <Select value={variable} onChange={(e) => setVariable(e.target.value)}>
           <option value="Nome">Nome</option>
           <option value="Idade">Idade</option>
         </Select>
-      </div>
-
-      <div>
-        <p>Is</p>
 
         <Select
           value={condition}
           onChange={(e) => setCondition(e.target.value)}
         >
-          <option value={">"}>Greater</option>
-          <option value={"<"}>Less</option>
-          <option value={">="}>Greater or equal</option>
-          <option value={"<="}>Lesser or equal</option>
-          <option value="=">Equal</option>
+          <option value={">"}>Greater than</option>
+          <option value={"<"}>Less than</option>
+          <option value={">="}>Greater or equal to</option>
+          <option value={"<="}>Lesser or equal to</option>
+          <option value="=">Equal to</option>
         </Select>
-      </div>
 
-      <div className="w-full">
-        <p>{condition === "=" ? "To" : "Than"}</p>
         <Input
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          placeholder="Value"
         />
+      </div>
+
+      <div className="flex flex-row items-center gap-1 text-green-400 font-semibold cursor-pointer">
+        <FaPlus size={15} />
+        <p>Condition</p>
       </div>
 
       <button onClick={saveProps}>Salvar</button>

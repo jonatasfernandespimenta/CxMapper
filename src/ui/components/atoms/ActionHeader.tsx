@@ -5,15 +5,20 @@ interface IActionHeader {
   icon: JSX.Element;
   actionName: string;
   isActive: boolean;
+  onClick: () => void;
 }
 
 export default function ActionHeader({
   icon,
   actionName,
   isActive,
+  onClick,
 }: IActionHeader) {
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div
+      onClick={onClick}
+      className="flex flex-col items-center cursor-pointer gap-2"
+    >
       <div className="flex flex-row items-center gap-2">
         <div className="bg-green-200 p-1 rounded">{icon}</div>
 

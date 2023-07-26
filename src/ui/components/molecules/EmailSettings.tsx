@@ -2,8 +2,6 @@
 
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useState } from "react";
-import Condition from "./Condition";
-import Select from "../atoms/Select";
 import Input from "../atoms/Input";
 import TextArea from "../atoms/TextArea";
 import FileInput from "../atoms/FileInput";
@@ -18,7 +16,7 @@ export default function EmailSettings({ item }: IEmailSettings) {
   const [to, setTo] = useState<string>("");
   const [subject, setSubject] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const [attachment, setAttachment] = useState<File>();
+  const [attachment, setAttachment] = useState<string>();
 
   function saveProps() {
     const updatedItem: IItem<"email"> = {
@@ -28,7 +26,7 @@ export default function EmailSettings({ item }: IEmailSettings) {
         subject,
         message,
         attachment,
-        from: 'company@company.com'
+        from: "company@company.com",
       },
     };
 
@@ -42,7 +40,6 @@ export default function EmailSettings({ item }: IEmailSettings) {
 
   return (
     <div className="flex flex-col gap-4 text-black">
-
       <div>
         <p>Send To</p>
         <Input value={to} onChange={(e) => setTo(e.target.value)} />
@@ -55,12 +52,19 @@ export default function EmailSettings({ item }: IEmailSettings) {
 
       <div>
         <p>Message</p>
-        <TextArea value={message} onChange={(e) => setMessage(e.target.value)} />
+        <TextArea
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
       </div>
 
       <div>
         <p>Atachment</p>
-        <FileInput value={subject} onChange={(e) => setSubject(e.target.value)} />
+
+        <FileInput
+          value={attachment}
+          onChange={(e) => setAttachment(e.target.value)}
+        />
       </div>
     </div>
   );
