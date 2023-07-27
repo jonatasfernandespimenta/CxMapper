@@ -20,7 +20,9 @@ export default function Maps() {
         <AddMap />
 
         {maps.map((map, idx) => (
-          <div onClick={() => router.push(`/ruler/${idx}`)}>{map}</div>
+          <div key={idx} onClick={() => router.push(`/ruler/${idx}`)}>
+            {map}
+          </div>
         ))}
       </div>
     </MainLayout>

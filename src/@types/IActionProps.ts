@@ -1,6 +1,7 @@
 export interface ConditionProps {
+  type?: string | null;
   variable: string;
-  condition: ">=" | "<=" | ">" | "<" | "==";
+  condition: ">=" | "<=" | ">" | "<" | "==" | string;
   value: string;
 }
 
@@ -20,13 +21,13 @@ export interface EmailProps {
   subject: string;
   message: string;
   attachment?: any;
-  templateId?: number
+  templateId?: number;
 }
 
 export type ItemTypes = "condition" | "email" | "whatsapp" | "sms" | "add";
 
 type ItemWithType<T extends ItemTypes> = T extends "condition"
-  ? ConditionProps
+  ? ConditionProps[]
   : T extends "email"
   ? EmailProps
   : T extends "whatsapp"
