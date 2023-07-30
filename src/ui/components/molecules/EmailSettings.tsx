@@ -5,6 +5,7 @@ import { useState } from "react";
 import Input from "../atoms/Input";
 import TextArea from "../atoms/TextArea";
 import FileInput from "../atoms/FileInput";
+import Select from "../atoms/Select";
 
 interface IEmailSettings {
   item: IItem<"email">;
@@ -41,8 +42,19 @@ export default function EmailSettings({ item }: IEmailSettings) {
   return (
     <div className="flex flex-col gap-4 text-black">
       <div>
-        <p>Send To</p>
-        <Input value={to} onChange={(e) => setTo(e.target.value)} />
+        <p>To</p>
+        <Select value={to} onChange={(e) => setTo(e.target.value)}>
+          <option value="Nome">Claudio</option>
+          <option value="Idade">Jeff</option>
+        </Select>
+      </div>
+
+      <div>
+        <p>Template</p>
+        <Select value={to} onChange={(e) => setTo(e.target.value)}>
+          <option value="Nome">Claudio</option>
+          <option value="Idade">Jeff</option>
+        </Select>
       </div>
 
       <div>
@@ -65,6 +77,14 @@ export default function EmailSettings({ item }: IEmailSettings) {
           value={attachment}
           onChange={(e) => setAttachment(e.target.value)}
         />
+      </div>
+
+      <div>
+        <p>Box</p>
+        <Select value={to} onChange={(e) => setTo(e.target.value)}>
+          <option value="Nome">Email Files</option>
+          <option value="Idade">Garbage</option>
+        </Select>
       </div>
     </div>
   );
