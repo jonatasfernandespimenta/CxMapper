@@ -2,36 +2,28 @@
 
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useState } from "react";
-import Input from "../atoms/Input";
 import TextArea from "../atoms/TextArea";
-import FileInput from "../atoms/FileInput";
 import Select from "../atoms/Select";
 import SelectSearchOrCreate from "../atoms/SelectSearchOrCreate";
 
 interface IEmailSettings {
-  item: IItem<"email">;
+  item: IItem<"whatsapp">;
 }
 
-export default function EmailSettings({ item }: IEmailSettings) {
+export default function TextSettings({ item }: IEmailSettings) {
   const { items, setItems } = useRulerData();
 
   const [to, setTo] = useState<string>("");
-  const [subject, setSubject] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const [attachment, setAttachment] = useState<string>();
   const [template, setTemplate] = useState<string | undefined>("");
   const [dataset, setDataset] = useState<string | undefined>("");
 
   function saveProps() {
-    const updatedItem: IItem<"email"> = {
+    const updatedItem: IItem<"whatsapp"> = {
       ...item,
       props: {
-        to,
-        subject,
+        number: to,
         message,
-        attachment,
-        from: "company@company.com",
-        templateId: template ?? ''
       },
     };
 
@@ -58,8 +50,8 @@ export default function EmailSettings({ item }: IEmailSettings) {
       <div>
         <p>To</p>
         <Select value={to} onChange={(e) => setTo(e.target.value)}>
-          <option value="Nome">Claudio</option>
-          <option value="Idade">Jeff</option>
+          <option value="Jeff">+55 11 99999-9999</option>
+          <option value="Claudio">+55 11 98888-8888</option>
         </Select>
       </div>
 
@@ -69,33 +61,11 @@ export default function EmailSettings({ item }: IEmailSettings) {
       </div>
 
       <div>
-        <p>Subject</p>
-        <Input value={subject} onChange={(e) => setSubject(e.target.value)} />
-      </div>
-
-      <div>
         <p>Message</p>
         <TextArea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-      </div>
-
-      <div>
-        <p>Atachment</p>
-
-        <FileInput
-          value={attachment}
-          onChange={(e) => setAttachment(e.target.value)}
-        />
-      </div>
-
-      <div>
-        <p>Box</p>
-        <Select value={to} onChange={(e) => setTo(e.target.value)}>
-          <option value="Nome">Email Files</option>
-          <option value="Idade">Garbage</option>
-        </Select>
       </div>
     </div>
   );

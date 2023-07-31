@@ -21,7 +21,7 @@ export interface EmailProps {
   subject: string;
   message: string;
   attachment?: any;
-  templateId?: number;
+  templateId?: string;
 }
 
 export type ItemTypes = "condition" | "email" | "whatsapp" | "sms" | "add";
