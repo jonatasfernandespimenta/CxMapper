@@ -1,19 +1,19 @@
-'use client'
+"use client";
 
 import { FaMailBulk } from "react-icons/fa";
-import Action from "../atoms/Action";
+import Action from "./Action";
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useEffect, useState } from "react";
 import EmailSettings from "./EmailSettings";
 
 interface IEmail {
-  itemId: string
+  itemId: string;
 }
 
 export default function Email({ itemId }: IEmail) {
   const { items } = useRulerData();
 
-  const [item, setItem] = useState<IItem<'email'>>({} as IItem<'email'>);
+  const [item, setItem] = useState<IItem<"email">>({} as IItem<"email">);
 
   useEffect(() => {
     const foundItem = items.find((i) => i.id === itemId);
@@ -26,7 +26,13 @@ export default function Email({ itemId }: IEmail) {
   }, [items, itemId]);
 
   return (
-    <Action icon={<FaMailBulk />} actionName="E-Mail">
+    <Action
+      done={item.done ?? 0}
+      hasStatus
+      failed={item.failed ?? 0}
+      icon={<FaMailBulk />}
+      actionName="E-Mail"
+    >
       <EmailSettings item={item} />
     </Action>
   );

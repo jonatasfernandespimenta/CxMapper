@@ -8,6 +8,7 @@ import {
   FaQuestion,
   FaSave,
   FaFolder,
+  FaPlay,
 } from "react-icons/fa";
 
 export interface IActionsMenuOption {
@@ -56,5 +57,10 @@ export const actionsMenuOptions: IActionsMenuOption[] = [
     icon: <FaFolder />,
     text: "File Manager",
     type: "condition",
+  },
+  {
+    icon: <FaPlay />,
+    text: "Trigger",
+    type: "trigger",
   },
 ];

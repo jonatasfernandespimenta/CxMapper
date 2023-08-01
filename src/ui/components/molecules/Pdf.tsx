@@ -1,19 +1,19 @@
 "use client";
 
-import { FaSms } from "react-icons/fa";
+import { FaFile } from "react-icons/fa";
 import Action from "./Action";
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useEffect, useState } from "react";
-import TextSettings from "./TextSettings";
+import PdfSettings from "./PdfSettings";
 
-interface ISms {
+interface IPdf {
   itemId: string;
 }
 
-export default function Sms({ itemId }: ISms) {
+export default function Pdf({ itemId }: IPdf) {
   const { items } = useRulerData();
 
-  const [item, setItem] = useState<IItem<"whatsapp">>({} as IItem<"whatsapp">);
+  const [item, setItem] = useState<IItem<"pdf">>({} as IItem<"pdf">);
 
   useEffect(() => {
     const foundItem = items.find((i) => i.id === itemId);
@@ -29,11 +29,10 @@ export default function Sms({ itemId }: ISms) {
     <Action
       done={item.done ?? 0}
       failed={item.failed ?? 0}
-      icon={<FaSms />}
-      actionName="SMS"
-      hasStatus
+      icon={<FaFile />}
+      actionName="PDF"
     >
-      <TextSettings item={item} />
+      <PdfSettings item={item} />
     </Action>
   );
 }

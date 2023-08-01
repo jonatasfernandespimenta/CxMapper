@@ -3,6 +3,7 @@ interface IBox {
   shadow?: boolean;
   borderStyle?: "solid" | "dashed";
   className?: string;
+  onClick?: () => void;
 }
 
 export default function Box({
@@ -10,9 +11,11 @@ export default function Box({
   shadow = true,
   borderStyle = "solid",
   className,
+  onClick,
 }: IBox) {
   return (
     <div
+      onClick={onClick}
       className={`
         p-4
         ${shadow && "shadow"} 
@@ -20,7 +23,6 @@ export default function Box({
         border-${borderStyle === "solid" ? "[1px]" : "2"} 
         border-${borderStyle} 
         w-52 
-        h-20 
         cursor-pointer 
         ${className}
       `}

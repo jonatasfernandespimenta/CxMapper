@@ -1,19 +1,19 @@
 "use client";
 
-import { FaSms } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
 import Action from "./Action";
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useEffect, useState } from "react";
-import TextSettings from "./TextSettings";
+import TriggerSettings from "./TriggerSettings";
 
-interface ISms {
+interface ITrigger {
   itemId: string;
 }
 
-export default function Sms({ itemId }: ISms) {
+export default function Trigger({ itemId }: ITrigger) {
   const { items } = useRulerData();
 
-  const [item, setItem] = useState<IItem<"whatsapp">>({} as IItem<"whatsapp">);
+  const [item, setItem] = useState<IItem<"trigger">>({} as IItem<"trigger">);
 
   useEffect(() => {
     const foundItem = items.find((i) => i.id === itemId);
@@ -29,11 +29,10 @@ export default function Sms({ itemId }: ISms) {
     <Action
       done={item.done ?? 0}
       failed={item.failed ?? 0}
-      icon={<FaSms />}
-      actionName="SMS"
-      hasStatus
+      icon={<FaPlay />}
+      actionName="Trigger"
     >
-      <TextSettings item={item} />
+      <TriggerSettings item={item} />
     </Action>
   );
 }

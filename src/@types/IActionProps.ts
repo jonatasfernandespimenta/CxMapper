@@ -10,6 +10,13 @@ export interface WhatsappProps {
   message: string;
 }
 
+export interface PdfProps {
+  template: string;
+  dataset: string;
+  inputPath: string;
+  outputPath: string;
+}
+
 export interface SmsProps {
   number: string;
   message: string;
@@ -24,7 +31,26 @@ export interface EmailProps {
   templateId?: string;
 }
 
-export type ItemTypes = "condition" | "email" | "whatsapp" | "sms" | "add";
+export interface FileManagerProps {
+  action: string;
+  from: string;
+  file: string;
+  to?: string;
+}
+
+export interface TriggerProps {
+  type: string;
+}
+
+export type ItemTypes =
+  | "condition"
+  | "email"
+  | "whatsapp"
+  | "sms"
+  | "add"
+  | "file_manager"
+  | "pdf"
+  | "trigger";
 
 type ItemWithType<T extends ItemTypes> = T extends "condition"
   ? ConditionProps[]
@@ -34,8 +60,16 @@ type ItemWithType<T extends ItemTypes> = T extends "condition"
   ? WhatsappProps
   : T extends "sms"
   ? SmsProps
+  : T extends "file_manager"
+  ? FileManagerProps
+  : T extends "pdf"
+  ? PdfProps
+  : T extends "trigger"
+  ? TriggerProps
   : never;
 
 export interface IActionProps<T extends ItemTypes> {
   props: ItemWithType<T> | null;
+  done: number;
+  failed: number;
 }

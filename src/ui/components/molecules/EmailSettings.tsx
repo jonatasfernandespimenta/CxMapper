@@ -1,7 +1,7 @@
 "use client";
 
 import { IItem, useRulerData } from "@/contexts/RulerContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../atoms/Input";
 import TextArea from "../atoms/TextArea";
 import FileInput from "../atoms/FileInput";
@@ -31,7 +31,7 @@ export default function EmailSettings({ item }: IEmailSettings) {
         message,
         attachment,
         from: "company@company.com",
-        templateId: template ?? ''
+        templateId: template ?? "",
       },
     };
 
@@ -43,6 +43,10 @@ export default function EmailSettings({ item }: IEmailSettings) {
     setItems(updatedItems);
   }
 
+  useEffect(() => {
+    saveProps();
+  }, [to, subject, message, attachment, template, dataset]);
+
   const optionList = [
     { value: "1", label: "Welcome" },
     { value: "2", label: "Newsletter" },
@@ -52,7 +56,10 @@ export default function EmailSettings({ item }: IEmailSettings) {
     <div className="flex flex-col gap-4 text-black">
       <div>
         <p>Dataset</p>
-        <SelectSearchOrCreate onChange={(e) => setDataset(e?.value)} options={optionList} />
+        <SelectSearchOrCreate
+          onChange={(e) => setDataset(e?.value)}
+          options={optionList}
+        />
       </div>
 
       <div>
@@ -65,7 +72,10 @@ export default function EmailSettings({ item }: IEmailSettings) {
 
       <div>
         <p>Template</p>
-        <SelectSearchOrCreate onChange={(e) => setTemplate(e?.value)} options={optionList} />
+        <SelectSearchOrCreate
+          onChange={(e) => setTemplate(e?.value)}
+          options={optionList}
+        />
       </div>
 
       <div>

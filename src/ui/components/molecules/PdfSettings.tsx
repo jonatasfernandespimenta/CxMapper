@@ -2,29 +2,29 @@
 
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useState } from "react";
-import TextArea from "../atoms/TextArea";
-import Select from "../atoms/Select";
 import SelectSearchOrCreate from "../atoms/SelectSearchOrCreate";
-import { useRouter } from "next/router";
+import Input from "../atoms/Input";
 
-interface IEmailSettings {
-  item: IItem<"whatsapp">;
+interface IPdfSettings {
+  item: IItem<"pdf">;
 }
 
-export default function TextSettings({ item }: IEmailSettings) {
+export default function PdfSettings({ item }: IPdfSettings) {
   const { items, setItems } = useRulerData();
 
-  const [to, setTo] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
-  const [template, setTemplate] = useState<string | undefined>("");
-  const [dataset, setDataset] = useState<string | undefined>("");
+  const [inputPath, setInputPath] = useState<string>("");
+  const [outputPath, setOutputPath] = useState<string>("");
+  const [dataset, setDataset] = useState<string>("");
+  const [template, setTemplate] = useState<string>("");
 
   function saveProps() {
-    const updatedItem: IItem<"whatsapp"> = {
+    const updatedItem: IItem<"pdf"> = {
       ...item,
       props: {
-        number: to,
-        message,
+        template,
+        dataset,
+        inputPath,
+        outputPath,
       },
     };
 
@@ -52,11 +52,11 @@ export default function TextSettings({ item }: IEmailSettings) {
       </div>
 
       <div>
-        <p>To</p>
-        <Select value={to} onChange={(e) => setTo(e.target.value)}>
-          <option value="Jeff">+55 11 99999-9999</option>
-          <option value="Claudio">+55 11 98888-8888</option>
-        </Select>
+        <p>Input Path</p>
+        <Input
+          value={inputPath}
+          onChange={(e) => setInputPath(e.target.value)}
+        />
       </div>
 
       <div>
@@ -68,10 +68,10 @@ export default function TextSettings({ item }: IEmailSettings) {
       </div>
 
       <div>
-        <p>Message</p>
-        <TextArea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+        <p>Output Path</p>
+        <Input
+          value={outputPath}
+          onChange={(e) => setOutputPath(e.target.value)}
         />
       </div>
     </div>

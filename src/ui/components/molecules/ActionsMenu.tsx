@@ -7,7 +7,7 @@ import {
   actionsMenuOptions,
 } from "@/ui/utils/actionsMenuOptions";
 import { uuid } from "uuidv4";
-import Action from "../atoms/Action";
+import Action from "./Action";
 import Condition from "./Condition";
 import { useMapData } from "@/contexts/MapContext";
 import Email from "./Email";
@@ -28,12 +28,12 @@ export default function ActionsMenu() {
         id: itemId,
         props: null,
         type,
-        element: selectElement({ icon, text, itemId })
-          // text === "Condition" ? (
-          //   <Condition condition="" itemId={itemId} />
-          // ) : (
-          //   text === 'E-Mail' ? <Email itemId={itemId} /> : <Action actionName={text} icon={icon} />
-          // ),
+        element: selectElement({ icon, text, itemId }),
+        // text === "Condition" ? (
+        //   <Condition condition="" itemId={itemId} />
+        // ) : (
+        //   text === 'E-Mail' ? <Email itemId={itemId} /> : <Action actionName={text} icon={icon} />
+        // ),
       },
     ];
 

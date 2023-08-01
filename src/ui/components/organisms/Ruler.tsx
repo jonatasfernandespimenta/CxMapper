@@ -14,7 +14,7 @@ export default function Ruler() {
             <div className="w-10 h-1 bg-green-500 rounded-lg" />
             <FaChevronRight className="text-green-500 -mt-1.5 -ml-2.5" />
 
-            <div className="text-green-500 -mt-6">{element}</div>
+            <div className="text-green-500 -mt-12">{element}</div>
           </div>
         ))}
       </div>

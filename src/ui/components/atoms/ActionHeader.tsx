@@ -1,3 +1,4 @@
+import ActionStatus from "./ActionStatus";
 import Divider from "./Divider";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
@@ -6,6 +7,9 @@ interface IActionHeader {
   actionName: string;
   isActive: boolean;
   onClick: () => void;
+  failed?: number;
+  done?: number;
+  hasStatus?: boolean;
 }
 
 export default function ActionHeader({
@@ -13,21 +17,27 @@ export default function ActionHeader({
   actionName,
   isActive,
   onClick,
+  done,
+  failed,
+  hasStatus,
 }: IActionHeader) {
   return (
-    <div
-      onClick={onClick}
-      className="flex flex-col items-center cursor-pointer gap-2"
-    >
-      <div className="flex flex-row items-center gap-2">
-        <div className="bg-green-200 p-1 rounded">{icon}</div>
+    <>
+      <div
+        onClick={onClick}
+        className="flex flex-col items-center cursor-pointer gap-2"
+      >
+        {hasStatus && <ActionStatus done={done} failed={failed} />}
+        <div className="flex flex-row items-center gap-2 select-none">
+          <div className="bg-green-200 p-1 rounded">{icon}</div>
 
-        <p className="text-black font-semibold">{actionName}</p>
+          <p className="text-black font-semibold">{actionName}</p>
 
-        {isActive ? <FaChevronUp /> : <FaChevronDown />}
+          {isActive ? <FaChevronUp /> : <FaChevronDown />}
+        </div>
+
+        <Divider />
       </div>
-
-      <Divider />
-    </div>
+    </>
   );
 }

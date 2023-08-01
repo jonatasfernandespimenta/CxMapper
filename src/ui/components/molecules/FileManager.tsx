@@ -1,19 +1,21 @@
 "use client";
 
-import { FaSms } from "react-icons/fa";
+import { FaFolder } from "react-icons/fa";
 import Action from "./Action";
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useEffect, useState } from "react";
-import TextSettings from "./TextSettings";
+import FileManagerSettings from "./FileManagerSettings";
 
-interface ISms {
+interface IFileManager {
   itemId: string;
 }
 
-export default function Sms({ itemId }: ISms) {
+export default function FileManager({ itemId }: IFileManager) {
   const { items } = useRulerData();
 
-  const [item, setItem] = useState<IItem<"whatsapp">>({} as IItem<"whatsapp">);
+  const [item, setItem] = useState<IItem<"file_manager">>(
+    {} as IItem<"file_manager">
+  );
 
   useEffect(() => {
     const foundItem = items.find((i) => i.id === itemId);
@@ -27,13 +29,13 @@ export default function Sms({ itemId }: ISms) {
 
   return (
     <Action
-      done={item.done ?? 0}
-      failed={item.failed ?? 0}
-      icon={<FaSms />}
-      actionName="SMS"
-      hasStatus
+      hasStatus={false}
+      done={10}
+      failed={10}
+      icon={<FaFolder />}
+      actionName="File Manager"
     >
-      <TextSettings item={item} />
+      <FileManagerSettings item={item} />
     </Action>
   );
 }

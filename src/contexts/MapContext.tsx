@@ -5,6 +5,8 @@ import React, { useState } from "react";
 interface IMapContextType {
   activeItem: string;
   setActiveItem: (activeItem: string) => void;
+  jobFilter: string;
+  setJobFilter: (jobFilter: string) => void;
 }
 
 interface IMapContextProvider {
@@ -17,12 +19,15 @@ export const MapContext = React.createContext<IMapContextType>(
 
 export default function MapContextProvider({ children }: IMapContextProvider) {
   const [activeItem, setActiveItem] = useState("");
+  const [jobFilter, setJobFilter] = useState("");
 
   return (
     <MapContext.Provider
       value={{
         activeItem,
         setActiveItem,
+        jobFilter,
+        setJobFilter,
       }}
     >
       {children}

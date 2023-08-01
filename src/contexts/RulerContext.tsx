@@ -29,7 +29,14 @@ export default function RulerContextProvider({
   children,
 }: IRulerContextProvider) {
   const [items, setItems] = useState<IItem<ItemTypes>[]>([
-    { id: "add", element: <AddAction />, props: null, type: "add" },
+    {
+      id: "add",
+      element: <AddAction />,
+      props: null,
+      type: "add",
+      done: 0,
+      failed: 0,
+    },
   ]);
   const [isAddActionMenuOpen, setIsAddActionMenuOpen] =
     useState<boolean>(false);

@@ -1,24 +1,26 @@
-'use client'
+"use client";
 
 import { FaQuestion } from "react-icons/fa";
 import Rule from "../organisms/Rule";
-import Action from "../atoms/Action";
+import Action from "./Action";
 import ConditionSettings from "./ConditionSettings";
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useEffect, useState } from "react";
 
 interface ICondition {
   condition: string;
-  itemId: string
+  itemId: string;
 }
 
 export default function Condition({ condition, itemId }: ICondition) {
   const { items } = useRulerData();
 
-  const [item, setItem] = useState<IItem<'condition'>>({} as IItem<'condition'>);
+  const [item, setItem] = useState<IItem<"condition">>(
+    {} as IItem<"condition">
+  );
 
   useEffect(() => {
-    console.log('itemId: ', itemId)
+    console.log("itemId: ", itemId);
     const foundItem = items.find((i) => i.id === itemId);
     if (foundItem) {
       const itemType = foundItem.type;
