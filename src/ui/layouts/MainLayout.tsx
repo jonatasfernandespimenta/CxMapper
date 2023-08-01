@@ -9,7 +9,7 @@ export default function MainLayout({ children }: IMainLayout) {
     <div>
       <NavBar />
 
-      <div className="mt-10 p-4">{children}</div>
+      <div className="mt-16 p-4">{children}</div>
     </div>
   );
 }

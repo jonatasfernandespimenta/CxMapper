@@ -15,6 +15,7 @@ export interface PdfProps {
   dataset: string;
   inputPath: string;
   outputPath: string;
+  outputName: string;
 }
 
 export interface SmsProps {
@@ -42,6 +43,10 @@ export interface TriggerProps {
   type: string;
 }
 
+export interface TimerProps {
+  expression: string
+}
+
 export type ItemTypes =
   | "condition"
   | "email"
@@ -50,7 +55,8 @@ export type ItemTypes =
   | "add"
   | "file_manager"
   | "pdf"
-  | "trigger";
+  | "trigger"
+  | "timer"
 
 type ItemWithType<T extends ItemTypes> = T extends "condition"
   ? ConditionProps[]
@@ -66,6 +72,8 @@ type ItemWithType<T extends ItemTypes> = T extends "condition"
   ? PdfProps
   : T extends "trigger"
   ? TriggerProps
+  : T extends "timer"
+  ? TimerProps
   : never;
 
 export interface IActionProps<T extends ItemTypes> {

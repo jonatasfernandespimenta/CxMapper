@@ -4,6 +4,7 @@ import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useState } from "react";
 import SelectSearchOrCreate from "../atoms/SelectSearchOrCreate";
 import Input from "../atoms/Input";
+import Select from "../atoms/Select";
 
 interface IPdfSettings {
   item: IItem<"pdf">;
@@ -14,6 +15,7 @@ export default function PdfSettings({ item }: IPdfSettings) {
 
   const [inputPath, setInputPath] = useState<string>("");
   const [outputPath, setOutputPath] = useState<string>("");
+  const [outputName, setOutputName] = useState<string>("");
   const [dataset, setDataset] = useState<string>("");
   const [template, setTemplate] = useState<string>("");
 
@@ -25,6 +27,7 @@ export default function PdfSettings({ item }: IPdfSettings) {
         dataset,
         inputPath,
         outputPath,
+        outputName
       },
     };
 
@@ -69,9 +72,19 @@ export default function PdfSettings({ item }: IPdfSettings) {
 
       <div>
         <p>Output Path</p>
-        <Input
+        <Select
           value={outputPath}
           onChange={(e) => setOutputPath(e.target.value)}
+        >
+          <option>Templates</option>
+        </Select>
+      </div>
+
+      <div>
+        <p>Output Name</p>
+        <Input
+          value={outputName}
+          onChange={(e) => setOutputName(e.target.value)}
         />
       </div>
     </div>

@@ -4,6 +4,7 @@ import Email from "../components/molecules/Email";
 import FileManager from "../components/molecules/FileManager";
 import Pdf from "../components/molecules/Pdf";
 import Sms from "../components/molecules/Sms";
+import Timer from "../components/molecules/Timer";
 import Trigger from "../components/molecules/Trigger";
 import Whatsapp from "../components/molecules/Whatsapp";
 
@@ -22,6 +23,7 @@ export function selectElement({ text, itemId, icon }: ISelectElement) {
     "File Manager": <FileManager itemId={itemId} />,
     PDF: <Pdf itemId={itemId} />,
     Trigger: <Trigger itemId={itemId} />,
+    Timer: <Timer itemId={itemId} />,
     default: <Action actionName={text} icon={icon} />,
   };
 

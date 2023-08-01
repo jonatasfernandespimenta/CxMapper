@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import ActionHeader from "../atoms/ActionHeader";
-import ActionStatus from "../atoms/ActionStatus";
 
 interface IAction {
   onClick?: () => void;
@@ -28,9 +27,8 @@ export default function Action({
   return (
     <>
       <div
-        className={`w-56 ${
-          !hasStatus && "mt-4"
-        } text-sm p-4 shadow rounded-md border-solid border-[1px] flex justify-center flex-col gap-4`}
+        className={`w-56 ${!hasStatus && "mt-4"
+          } text-sm p-4 shadow rounded-md border-solid border-[1px] flex justify-center flex-col gap-4`}
       >
         <ActionHeader
           onClick={() => setIsVisible(!isVisible)}

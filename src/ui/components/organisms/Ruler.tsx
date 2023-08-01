@@ -1,10 +1,14 @@
 "use client";
 
 import { useRulerData } from "@/contexts/RulerContext";
+import { flow1, flow2, flows } from "@/mocks/flows";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { FaChevronRight } from "react-icons/fa";
 
-export default function Ruler() {
-  const { items } = useRulerData();
+export default function Ruler({ id }: any) {
+  const { items, setItems } = useRulerData();
+
 
   return (
     <>

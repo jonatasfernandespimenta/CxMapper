@@ -5,5 +5,9 @@ interface IProviders {
 }
 
 export default function Providers({ children }: IProviders) {
-  return <MapContextProvider>{children}</MapContextProvider>;
+  return (
+    <MapContextProvider>
+      {children}
+    </MapContextProvider>
+  );
 }

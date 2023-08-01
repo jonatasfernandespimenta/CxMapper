@@ -1,19 +1,19 @@
 "use client";
 
-import { FaPlay } from "react-icons/fa";
+import { FaClock } from "react-icons/fa";
 import Action from "./Action";
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useEffect, useState } from "react";
-import TriggerSettings from "./TriggerSettings";
+import TimerSettings from "./TimerSettings";
 
-interface ITrigger {
+interface ITimer {
   itemId: string;
 }
 
-export default function Trigger({ itemId }: ITrigger) {
+export default function Timer({ itemId }: ITimer) {
   const { items } = useRulerData();
 
-  const [item, setItem] = useState<IItem<"trigger">>({} as IItem<"trigger">);
+  const [item, setItem] = useState<IItem<"timer">>({} as IItem<"timer">);
 
   useEffect(() => {
     const foundItem = items.find((i) => i.id === itemId);
@@ -29,11 +29,11 @@ export default function Trigger({ itemId }: ITrigger) {
     <Action
       done={item.done ?? 0}
       failed={item.failed ?? 0}
-      icon={<FaPlay />}
-      actionName="Trigger"
-      hasStatus
+      icon={<FaClock />}
+      actionName="Timer"
     >
-      <TriggerSettings item={item} />
+      <TimerSettings item={item} />
     </Action>
   );
 }
+

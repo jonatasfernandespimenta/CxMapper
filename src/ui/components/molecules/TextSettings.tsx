@@ -54,8 +54,9 @@ export default function TextSettings({ item }: IEmailSettings) {
       <div>
         <p>To</p>
         <Select value={to} onChange={(e) => setTo(e.target.value)}>
-          <option value="Jeff">+55 11 99999-9999</option>
-          <option value="Claudio">+55 11 98888-8888</option>
+          <option value="Idade">User.Phone</option>
+          <option value="Nome">User.Email</option>
+          <option value="Idade">User.Name</option>
         </Select>
       </div>
 

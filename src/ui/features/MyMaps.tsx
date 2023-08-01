@@ -6,6 +6,7 @@ import Map from "../components/molecules/Map";
 import MainLayout from "../layouts/MainLayout";
 import CreateMapModal from "../components/organisms/CreateMapModal";
 import { useState } from "react";
+import Dropdown from "../components/molecules/Dropdown";
 
 interface NewMapFormValues {
   mapName: string;
@@ -14,7 +15,8 @@ interface NewMapFormValues {
 
 export default function Maps() {
   const [maps, setMaps] = useState([
-    <Map tag="Odonto" name="Kit de boas vindas" />,
+    <Map tag="Odonto" name="Proposta" key={0} />,
+    <Map tag="Odonto" name="Kit de Boas Vindas" key={0} />,
   ]);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -22,7 +24,7 @@ export default function Maps() {
   const router = useRouter();
 
   function handleChange(values: NewMapFormValues) {
-    setMaps([...maps, <Map tag={values.businessLine} name={values.mapName} />]);
+    setMaps([...maps, <Map tag={values.businessLine} name={values.mapName} key={Date.now().toString()} />]);
     setIsModalOpen(false);
   }
 
@@ -38,7 +40,6 @@ export default function Maps() {
         <div className="mb-6">
           <h1 className="font-semibold">My Maps</h1>
         </div>
-
         <div className="flex flex-row gap-4 flex-wrap">
           <AddMap onClick={() => setIsModalOpen(true)} />
 

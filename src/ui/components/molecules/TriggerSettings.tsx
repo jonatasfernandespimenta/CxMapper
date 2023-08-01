@@ -1,8 +1,9 @@
 "use client";
 
 import { IItem, useRulerData } from "@/contexts/RulerContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "../atoms/Select";
+import Input from "../atoms/Input";
 
 interface ITriggerSettings {
   item: IItem<"trigger">;
@@ -12,6 +13,7 @@ export default function TriggerSettings({ item }: ITriggerSettings) {
   const { items, setItems } = useRulerData();
 
   const [type, setType] = useState<string>("");
+  const [expression, setExpression] = useState("")
 
   function saveProps() {
     const updatedItem: IItem<"trigger"> = {
@@ -29,6 +31,10 @@ export default function TriggerSettings({ item }: ITriggerSettings) {
     setItems(updatedItems);
   }
 
+  useEffect(() => {
+    saveProps();
+  }, [type])
+
   return (
     <div className="flex flex-col gap-4 text-black">
       <div>
@@ -39,6 +45,18 @@ export default function TriggerSettings({ item }: ITriggerSettings) {
           <option>Hit</option>
         </Select>
       </div>
+
+      {
+        type === "Timer" && <div>
+          <p>Expression</p>
+          <Select value={expression} onChange={(e) => setExpression(e.target.value)}>
+            <option>Every minute</option>
+            <option>Every hour</option>
+            <option>Every 12 hours</option>
+            <option>Everyday</option>
+          </Select>
+        </div>
+      }
     </div>
   );
 }

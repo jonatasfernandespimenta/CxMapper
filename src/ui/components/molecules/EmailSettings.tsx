@@ -16,7 +16,7 @@ export default function EmailSettings({ item }: IEmailSettings) {
   const { items, setItems } = useRulerData();
 
   const [to, setTo] = useState<string>("");
-  const [subject, setSubject] = useState<string>("");
+  const [subject, setSubject] = useState<string>(item.props?.subject || "");
   const [message, setMessage] = useState<string>("");
   const [attachment, setAttachment] = useState<string>();
   const [template, setTemplate] = useState<string | undefined>("");
@@ -65,8 +65,9 @@ export default function EmailSettings({ item }: IEmailSettings) {
       <div>
         <p>To</p>
         <Select value={to} onChange={(e) => setTo(e.target.value)}>
-          <option value="Nome">Claudio</option>
-          <option value="Idade">Jeff</option>
+          <option value="Nome">User.Email</option>
+          <option value="Idade">User.Phone</option>
+          <option value="Idade">User.Name</option>
         </Select>
       </div>
 

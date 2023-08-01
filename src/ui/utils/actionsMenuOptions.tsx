@@ -9,6 +9,7 @@ import {
   FaSave,
   FaFolder,
   FaPlay,
+  FaClock
 } from "react-icons/fa";
 
 export interface IActionsMenuOption {
@@ -62,5 +63,10 @@ export const actionsMenuOptions: IActionsMenuOption[] = [
     icon: <FaPlay />,
     text: "Trigger",
     type: "trigger",
+  },
+  {
+    icon: <FaClock />,
+    text: "Timer",
+    type: "timer",
   },
 ];
