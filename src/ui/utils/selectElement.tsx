@@ -1,12 +1,5 @@
-import Action from "../components/molecules/Action";
+import ActionWrapper from "../components/molecules/ActionWrapper";
 import Condition from "../components/molecules/Condition";
-import Email from "../components/molecules/Email";
-import FileManager from "../components/molecules/FileManager";
-import Pdf from "../components/molecules/Pdf";
-import Sms from "../components/molecules/Sms";
-import Timer from "../components/molecules/Timer";
-import Trigger from "../components/molecules/Trigger";
-import Whatsapp from "../components/molecules/Whatsapp";
 
 interface ISelectElement {
   text: string;
@@ -16,17 +9,16 @@ interface ISelectElement {
 
 export function selectElement({ text, itemId, icon }: ISelectElement) {
   const elements = {
-    Condition: <Condition condition="" itemId={itemId} />,
-    "E-Mail": <Email itemId={itemId} />,
-    SMS: <Sms itemId={itemId} />,
-    Whatsapp: <Whatsapp itemId={itemId} />,
-    "File Manager": <FileManager itemId={itemId} />,
-    PDF: <Pdf itemId={itemId} />,
-    Trigger: <Trigger itemId={itemId} />,
-    Timer: <Timer itemId={itemId} />,
-    default: <Action actionName={text} icon={icon} />,
+    Condition: <Condition itemId={itemId} condition="" />,
+    "E-Mail": <ActionWrapper itemType="email" actionName={text} actionIcon={icon} itemId={itemId} />,
+    SMS: <ActionWrapper itemType="sms" actionName={text} actionIcon={icon} itemId={itemId} />,
+    Whatsapp: <ActionWrapper itemType="whatsapp" actionName={text} actionIcon={icon} itemId={itemId} />,
+    "File Manager": <ActionWrapper itemType="file_manager" actionName={text} actionIcon={icon} itemId={itemId} />,
+    PDF: <ActionWrapper itemType="pdf" actionName={text} actionIcon={icon} itemId={itemId} />,
+    Trigger: <ActionWrapper itemType="trigger" actionName={text} actionIcon={icon} itemId={itemId} />,
+    Timer: <ActionWrapper itemType="timer" actionName={text} actionIcon={icon} itemId={itemId} />,
   };
 
   // @ts-ignore
-  return elements[text] || elements["default"];
+  return elements[text]
 }

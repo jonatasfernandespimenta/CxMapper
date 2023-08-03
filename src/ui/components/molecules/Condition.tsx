@@ -32,12 +32,12 @@ export default function Condition({ condition, itemId }: ICondition) {
 
   return (
     <div className="flex-col items-center justify-center">
-      <Action icon={<FaQuestion />} actionName="Condition">
+      <Action itemId={itemId} icon={<FaQuestion />} actionName="Condition">
         <ConditionSettings item={item} />
       </Action>
 
       <div className="flex flex-col absolute ml-28">
-        <div className="w-1 h-28 bg-green-500 rounded-lg" />
+        <div className="w-1 h-28 bg-green-500 rounded-lg -mb-1" />
 
         <div className="flex items-center justify-center flex-col">
           <Rule />

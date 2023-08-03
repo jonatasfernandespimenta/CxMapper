@@ -3,6 +3,7 @@
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useEffect, useState } from "react";
 import Select from "../atoms/Select";
+import Input from "../atoms/Input";
 
 interface ITimerSettings {
   item: IItem<"timer">;
@@ -12,10 +13,12 @@ export default function TimerSettings({ item }: ITimerSettings) {
   const { items, setItems } = useRulerData();
 
   const [expression, setExpression] = useState("")
+  const [actionDescription, setActionDescription] = useState("")
 
   function saveProps() {
     const updatedItem: IItem<"timer"> = {
       ...item,
+      description: actionDescription,
       props: {
         expression,
       },
@@ -31,10 +34,18 @@ export default function TimerSettings({ item }: ITimerSettings) {
 
   useEffect(() => {
     saveProps();
-  }, [expression])
+  }, [expression, actionDescription])
 
   return (
     <div className="flex flex-col gap-4 text-black">
+      <div>
+        <p>Action Description</p>
+        <Input
+          onChange={(e) => setActionDescription(e.target.value)}
+          value={actionDescription}
+        />
+      </div>
+
       <div>
         <p>Expression</p>
         <Select value={expression} onChange={(e) => setExpression(e.target.value)}>

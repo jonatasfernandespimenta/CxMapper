@@ -30,6 +30,7 @@ export interface EmailProps {
   message: string;
   attachment?: any;
   templateId?: string;
+  providerId: string
 }
 
 export interface FileManagerProps {

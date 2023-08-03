@@ -50,6 +50,7 @@ export default function ConditionSettings({ item }: IConditionSettings) {
     <div className="flex flex-col gap-4 text-black">
       {conditions.map((_, idx) => (
         <ConditionForm
+          key={idx}
           handleChange={(e) => handleChange(e, idx)}
           hasType={idx > 0}
         />

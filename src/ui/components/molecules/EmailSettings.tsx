@@ -21,10 +21,13 @@ export default function EmailSettings({ item }: IEmailSettings) {
   const [attachment, setAttachment] = useState<string>();
   const [template, setTemplate] = useState<string | undefined>("");
   const [dataset, setDataset] = useState<string | undefined>("");
+  const [actionDescription, setActionDescription] = useState<string>("");
+  const [provider, setProvider] = useState<string>("");
 
   function saveProps() {
     const updatedItem: IItem<"email"> = {
       ...item,
+      description: actionDescription,
       props: {
         to,
         subject,
@@ -32,6 +35,7 @@ export default function EmailSettings({ item }: IEmailSettings) {
         attachment,
         from: "company@company.com",
         templateId: template ?? "",
+        providerId: provider
       },
     };
 
@@ -45,7 +49,7 @@ export default function EmailSettings({ item }: IEmailSettings) {
 
   useEffect(() => {
     saveProps();
-  }, [to, subject, message, attachment, template, dataset]);
+  }, [to, subject, message, attachment, template, dataset, actionDescription]);
 
   const optionList = [
     { value: "1", label: "Welcome" },
@@ -54,6 +58,14 @@ export default function EmailSettings({ item }: IEmailSettings) {
 
   return (
     <div className="flex flex-col gap-4 text-black">
+      <div>
+        <p>Action Description</p>
+        <Input
+          onChange={(e) => setActionDescription(e.target.value)}
+          value={actionDescription}
+        />
+      </div>
+
       <div>
         <p>Dataset</p>
         <SelectSearchOrCreate
@@ -64,11 +76,13 @@ export default function EmailSettings({ item }: IEmailSettings) {
 
       <div>
         <p>To</p>
-        <Select value={to} onChange={(e) => setTo(e.target.value)}>
-          <option value="Nome">User.Email</option>
-          <option value="Idade">User.Phone</option>
-          <option value="Idade">User.Name</option>
-        </Select>
+        <SelectSearchOrCreate onChange={(e) => setTo(e.value)} options={[
+          { value: "1", label: "Email.Subject" },
+          { value: "2", label: "User.Email" },
+          { value: "3", label: "Email.Body" },
+          { value: "4", label: "User.Phone" },
+          { value: "5", label: "User.Name" },
+        ]} />
       </div>
 
       <div>
@@ -81,11 +95,15 @@ export default function EmailSettings({ item }: IEmailSettings) {
 
       <div>
         <p>Subject</p>
-        <Input value={subject} onChange={(e) => setSubject(e.target.value)} />
+        <SelectSearchOrCreate onChange={(e) => setSubject(e.value)} options={[
+          { value: "1", label: "Email.Subject" },
+          { value: "2", label: "User.Email" },
+          { value: "3", label: "Email.Body" },
+        ]} />
       </div>
 
       <div>
-        <p>Message</p>
+        <p>Body</p>
         <TextArea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
@@ -98,6 +116,16 @@ export default function EmailSettings({ item }: IEmailSettings) {
         <FileInput
           value={attachment}
           onChange={(e) => setAttachment(e.target.value)}
+        />
+      </div>
+
+      <div>
+        <p>Provider</p>
+        <SelectSearchOrCreate
+          onChange={(e) => setProvider(e?.value)}
+          options={[{ value: "1", label: "AWS SES" },
+          { value: "2", label: "Mailchimp SMTP" },
+          { value: "3", label: "Azure Communication Service" },]}
         />
       </div>
 

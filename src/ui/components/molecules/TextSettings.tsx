@@ -1,11 +1,12 @@
 "use client";
 
 import { IItem, useRulerData } from "@/contexts/RulerContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextArea from "../atoms/TextArea";
 import Select from "../atoms/Select";
 import SelectSearchOrCreate from "../atoms/SelectSearchOrCreate";
 import { useRouter } from "next/router";
+import Input from "../atoms/Input";
 
 interface IEmailSettings {
   item: IItem<"whatsapp">;
@@ -18,10 +19,12 @@ export default function TextSettings({ item }: IEmailSettings) {
   const [message, setMessage] = useState<string>("");
   const [template, setTemplate] = useState<string | undefined>("");
   const [dataset, setDataset] = useState<string | undefined>("");
+  const [actionDescription, setActionDescription] = useState<string>("");
 
   function saveProps() {
     const updatedItem: IItem<"whatsapp"> = {
       ...item,
+      description: actionDescription,
       props: {
         number: to,
         message,
@@ -36,6 +39,10 @@ export default function TextSettings({ item }: IEmailSettings) {
     setItems(updatedItems);
   }
 
+  useEffect(() => {
+    saveProps()
+  }, [to, message, template, dataset, actionDescription])
+
   const optionList = [
     { value: "1", label: "Welcome" },
     { value: "2", label: "Newsletter" },
@@ -43,6 +50,14 @@ export default function TextSettings({ item }: IEmailSettings) {
 
   return (
     <div className="flex flex-col gap-4 text-black">
+      <div>
+        <p>Action Description</p>
+        <Input
+          onChange={(e) => setActionDescription(e.target.value)}
+          value={actionDescription}
+        />
+      </div>
+
       <div>
         <p>Dataset</p>
         <SelectSearchOrCreate

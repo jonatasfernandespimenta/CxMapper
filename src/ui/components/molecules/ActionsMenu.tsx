@@ -7,10 +7,7 @@ import {
   actionsMenuOptions,
 } from "@/ui/utils/actionsMenuOptions";
 import { uuid } from "uuidv4";
-import Action from "./Action";
-import Condition from "./Condition";
 import { useMapData } from "@/contexts/MapContext";
-import Email from "./Email";
 import { selectElement } from "@/ui/utils/selectElement";
 
 export default function ActionsMenu() {
@@ -29,11 +26,8 @@ export default function ActionsMenu() {
         props: null,
         type,
         element: selectElement({ icon, text, itemId }),
-        // text === "Condition" ? (
-        //   <Condition condition="" itemId={itemId} />
-        // ) : (
-        //   text === 'E-Mail' ? <Email itemId={itemId} /> : <Action actionName={text} icon={icon} />
-        // ),
+        done: 0,
+        failed: 0,
       },
     ];
 

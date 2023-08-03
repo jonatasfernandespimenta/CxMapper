@@ -3,11 +3,13 @@
 import AddAction from "@/ui/components/organisms/AddAction";
 import React, { useState } from "react";
 import { IActionProps, ItemTypes } from "@/@types/IActionProps";
+import Trigger from "@/ui/components/molecules/Trigger";
 
 export interface IItem<T extends ItemTypes> extends IActionProps<T> {
   id: string;
   element: JSX.Element;
   type: ItemTypes;
+  description?: string
 }
 
 interface IRulerContextType {
@@ -29,6 +31,14 @@ export default function RulerContextProvider({
   children,
 }: IRulerContextProvider) {
   const [items, setItems] = useState<IItem<ItemTypes>[]>([
+    {
+      id: "trigger",
+      element: <Trigger itemId="trigger" />,
+      props: null,
+      type: "trigger",
+      done: 0,
+      failed: 0,
+    },
     {
       id: "add",
       element: <AddAction />,

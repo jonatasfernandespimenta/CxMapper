@@ -1,7 +1,7 @@
 "use client";
 
 import { IItem, useRulerData } from "@/contexts/RulerContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SelectSearchOrCreate from "../atoms/SelectSearchOrCreate";
 import Input from "../atoms/Input";
 import Select from "../atoms/Select";
@@ -18,10 +18,12 @@ export default function PdfSettings({ item }: IPdfSettings) {
   const [outputName, setOutputName] = useState<string>("");
   const [dataset, setDataset] = useState<string>("");
   const [template, setTemplate] = useState<string>("");
+  const [actionDescription, setActionDescription] = useState<string>("");
 
   function saveProps() {
     const updatedItem: IItem<"pdf"> = {
       ...item,
+      description: actionDescription,
       props: {
         template,
         dataset,
@@ -39,6 +41,10 @@ export default function PdfSettings({ item }: IPdfSettings) {
     setItems(updatedItems);
   }
 
+  useEffect(() => {
+    saveProps()
+  }, [template, dataset, inputPath, outputPath, outputName, actionDescription])
+
   const optionList = [
     { value: "1", label: "Welcome" },
     { value: "2", label: "Newsletter" },
@@ -46,6 +52,14 @@ export default function PdfSettings({ item }: IPdfSettings) {
 
   return (
     <div className="flex flex-col gap-4 text-black">
+      <div>
+        <p>Action Description</p>
+        <Input
+          onChange={(e) => setActionDescription(e.target.value)}
+          value={actionDescription}
+        />
+      </div>
+
       <div>
         <p>Dataset</p>
         <SelectSearchOrCreate

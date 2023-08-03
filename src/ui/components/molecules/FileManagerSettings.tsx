@@ -4,6 +4,7 @@ import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useEffect, useState } from "react";
 import Select from "../atoms/Select";
 import ReactSelect from "react-select";
+import Input from "../atoms/Input";
 
 interface IFileManagerSettings {
   item: IItem<"file_manager">;
@@ -16,10 +17,12 @@ export default function FileManagerSettings({ item }: IFileManagerSettings) {
   const [from, setFrom] = useState<string>("");
   const [to, setTo] = useState<string>("");
   const [file, setFile] = useState<string>("");
+  const [actionDescription, setActionDescription] = useState<string>("")
 
   function saveProps() {
     const updatedItem: IItem<"file_manager"> = {
       ...item,
+      description: actionDescription,
       props: {
         to,
         action,
@@ -38,7 +41,7 @@ export default function FileManagerSettings({ item }: IFileManagerSettings) {
 
   useEffect(() => {
     saveProps();
-  }, [to, action, from]);
+  }, [to, action, from, actionDescription]);
 
   const optionList = [
     { value: "1", label: "copy" },
@@ -48,6 +51,14 @@ export default function FileManagerSettings({ item }: IFileManagerSettings) {
 
   return (
     <div className="flex flex-col gap-4 text-black">
+      <div>
+        <p>Action Description</p>
+        <Input
+          onChange={(e) => setActionDescription(e.target.value)}
+          value={actionDescription}
+        />
+      </div>
+
       <div>
         <p>Action</p>
         <ReactSelect

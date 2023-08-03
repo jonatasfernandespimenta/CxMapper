@@ -55,7 +55,7 @@ export default function RulerScreen() {
   return (
     <MainLayout>
       <div className="flex flex-col gap-20">
-        <div className="fixed">
+        <div className="fixed bg-white z-30">
           <h1
             className="text-gray-400 font-semibold cursor-pointer mt-4"
             onClick={() => router.push("/maps")}
@@ -63,25 +63,29 @@ export default function RulerScreen() {
             SEGSig Seguros | Odonto |{" "}
             <span className="text-green-500">Teste</span>
           </h1>
-          <ReactSelect
-            onChange={(e) => e && setJobFilter(e.value)}
-            placeholder="Localize Job..."
-            options={optionList}
-          />
 
-          <div onClick={() => setIsExecuting(true)} className="flex flex-row cursor-pointer items-center mt-6 text-green-500 bg-green-200 max-w-fit p-2 rounded-md">
+          <div className="flex flex-row items-center gap-2 mt-2">
+            <ReactSelect
+              onChange={(e) => e && setJobFilter(e.value)}
+              placeholder="Localize Job..."
+              options={optionList}
+            />
 
-            {executing ? (<Spinner />) : (
-              <>
-                <FaPlay />
-                <p>Run Job</p>
-              </>
-            )}
+            <div onClick={() => setIsExecuting(true)} className="flex flex-row cursor-pointer items-center text-green-500 bg-green-200 max-w-fit p-2 rounded-md">
+
+              {executing ? (<Spinner />) : (
+                <>
+                  <FaPlay />
+                  <p>Run Job</p>
+                </>
+              )}
+            </div>
+
           </div>
         </div>
 
 
-        <div className="mt-60">
+        <div className="mt-52">
           <Rule />
         </div>
       </div>

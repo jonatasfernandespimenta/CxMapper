@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ActionHeader from "../atoms/ActionHeader";
+import { useRulerData } from "@/contexts/RulerContext";
 
 interface IAction {
   onClick?: () => void;
@@ -12,6 +13,8 @@ interface IAction {
   done?: number;
   failed?: number;
   hasStatus?: boolean;
+  itemId: string
+  description?: string
 }
 
 export default function Action({
@@ -21,8 +24,16 @@ export default function Action({
   done,
   failed,
   hasStatus,
+  itemId,
+  description
 }: IAction) {
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const { items, setItems } = useRulerData();
+
+  function handleDelete() {
+    const filteredItems = items.filter(item => item.id !== itemId)
+    setItems(filteredItems)
+  }
 
   return (
     <>
@@ -38,8 +49,9 @@ export default function Action({
           done={done}
           failed={failed}
           hasStatus={hasStatus}
+          onDelete={handleDelete}
         />
-
+        {description && <p className="flex self-center text-center">{description}</p>}
         <div className={isVisible ? "" : "hidden"}>{children}</div>
       </div>
     </>

@@ -31,7 +31,8 @@ export default function Trigger({ itemId }: ITrigger) {
       failed={item.failed ?? 0}
       icon={<FaPlay />}
       actionName="Trigger"
-      hasStatus
+      hasStatus={false}
+      itemId={itemId}
     >
       <TriggerSettings item={item} />
     </Action>
