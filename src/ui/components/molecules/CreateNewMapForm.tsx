@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Input from "../atoms/Input";
+import Button from "../atoms/Button";
 
 interface NewMapFormValues {
   mapName: string;
@@ -31,9 +32,7 @@ export default function CreateNewMapForm({ handleChange }: ICreateNewMapForm) {
         placeholder="Business Line"
       />
 
-      <button onClick={handlePress} className="p-2 bg-green-200 rounded">
-        Create
-      </button>
+      <Button handlePress={handlePress} text="Create" />
     </div>
   );
 }

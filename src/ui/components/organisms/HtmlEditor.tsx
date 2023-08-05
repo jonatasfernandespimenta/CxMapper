@@ -18,7 +18,7 @@ export default function HtmlEditor() {
     <div className='flex flex-1 w-screen flex-row'>
       <div className='flex flex-1'>
         <Editor
-          height="90vh"
+          height="50vh"
           theme='vs-dark'
           defaultLanguage="html"
           defaultValue={`<h1>Hello</h1>

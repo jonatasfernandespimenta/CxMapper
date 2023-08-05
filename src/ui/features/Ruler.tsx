@@ -55,7 +55,7 @@ export default function RulerScreen() {
   return (
     <MainLayout>
       <div className="flex flex-col gap-20">
-        <div className="fixed bg-white z-30">
+        <div className="fixed bg-white ">
           <h1
             className="text-gray-400 font-semibold cursor-pointer mt-4"
             onClick={() => router.push("/maps")}
