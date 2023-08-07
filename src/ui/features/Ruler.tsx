@@ -3,7 +3,6 @@
 import MainLayout from "../layouts/MainLayout";
 import Rule from "../components/organisms/Rule";
 import { useRouter } from "next/navigation";
-import ReactSelect from "react-select";
 import { useMapData } from "@/contexts/MapContext";
 
 import { FaPlay } from 'react-icons/fa';
@@ -11,6 +10,7 @@ import { useEffect, useState } from "react";
 import Spinner from "../components/atoms/Spinner";
 
 import { toast } from 'react-toastify';
+import MySelect from "../components/atoms/MySelect";
 
 const optionList = [
   { value: "1", label: "All" },
@@ -61,11 +61,11 @@ export default function RulerScreen() {
             onClick={() => router.push("/maps")}
           >
             SEGSig Seguros | Odonto |{" "}
-            <span className="text-green-500">Teste</span>
+            <span className="text-green-500">Proposta</span>
           </h1>
 
           <div className="flex flex-row items-center gap-2 mt-2">
-            <ReactSelect
+            <MySelect
               onChange={(e) => e && setJobFilter(e.value)}
               placeholder="Localize Job..."
               options={optionList}

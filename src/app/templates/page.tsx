@@ -1,7 +1,7 @@
-import CreateTemplateScreen from "@/ui/features/CreateTemplate";
+import MyTemplates from "@/ui/features/MyTemplates";
 
-export default function CreateTemplate() {
+export default function Templates() {
   return (
-    <CreateTemplateScreen />
+    <MyTemplates />
   )
 }

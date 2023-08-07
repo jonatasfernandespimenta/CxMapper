@@ -4,6 +4,7 @@ import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useEffect, useState } from "react";
 import Select from "../atoms/Select";
 import Input from "../atoms/Input";
+import Toggle from "../atoms/Toggle";
 
 interface ITriggerSettings {
   item: IItem<"trigger">;
@@ -11,6 +12,8 @@ interface ITriggerSettings {
 
 export default function TriggerSettings({ item }: ITriggerSettings) {
   const { items, setItems } = useRulerData();
+
+  const [triggerType, setTriggetType] = useState(false)
 
   const [type, setType] = useState<string>("");
   const [expression, setExpression] = useState("")
@@ -47,14 +50,32 @@ export default function TriggerSettings({ item }: ITriggerSettings) {
       </div>
 
       {
-        type === "Timer" && <div>
+        type === "Timer" && <div className="gap-2">
           <p>Expression</p>
-          <Select value={expression} onChange={(e) => setExpression(e.target.value)}>
-            <option>Every minute</option>
-            <option>Every hour</option>
-            <option>Every 12 hours</option>
-            <option>Everyday</option>
-          </Select>
+
+          <div className="mb-2">
+            <Toggle
+              option1="Premade"
+              option2="Custom"
+              value={triggerType}
+              onChange={(e) => setTriggetType(!triggerType)}
+            />
+          </div>
+
+          {
+            triggerType ? (
+              <div>
+                <p>Cron Expression</p>
+                <Input value={expression} onChange={(e) => setExpression(e.target.value)} />
+              </div>
+            ) :
+              <Select value={expression} onChange={(e) => setExpression(e.target.value)}>
+                <option>Every minute</option>
+                <option>Every hour</option>
+                <option>Every 12 hours</option>
+                <option>Everyday</option>
+              </Select>
+          }
         </div>
       }
     </div>

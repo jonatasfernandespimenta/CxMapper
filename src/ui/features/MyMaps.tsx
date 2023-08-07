@@ -16,7 +16,7 @@ interface NewMapFormValues {
 export default function Maps() {
   const [maps, setMaps] = useState([
     <Map tag="Odonto" name="Proposta" key={0} />,
-    <Map tag="Odonto" name="Kit de Boas Vindas" key={0} />,
+    <Map tag="Odonto" name="Kit de Boas Vindas" key={1} />,
   ]);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

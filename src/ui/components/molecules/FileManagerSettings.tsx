@@ -3,8 +3,8 @@
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useEffect, useState } from "react";
 import Select from "../atoms/Select";
-import ReactSelect from "react-select";
 import Input from "../atoms/Input";
+import MySelect from "../atoms/MySelect";
 
 interface IFileManagerSettings {
   item: IItem<"file_manager">;
@@ -61,7 +61,7 @@ export default function FileManagerSettings({ item }: IFileManagerSettings) {
 
       <div>
         <p>Action</p>
-        <ReactSelect
+        <MySelect
           onChange={(e) => e && setAction(e.value)}
           options={optionList}
         />

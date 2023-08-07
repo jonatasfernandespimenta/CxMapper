@@ -4,15 +4,22 @@ import { useEffect, useState } from 'react';
 
 import Editor from '@monaco-editor/react'
 
-export default function HtmlEditor() {
-  const [code, setCode] = useState<string | undefined>('')
+interface IHtmlEditor {
+  code?: string
+}
+
+export default function HtmlEditor(props: IHtmlEditor) {
+  const [code, setCode] = useState<string | undefined>(`
+  <h1>Hello</h1>
+  <p>start editing to see changes</p>
+`)
 
   useEffect(() => {
-    setCode(`
-      <h1>Hello</h1>
-      <p>start editing to see changes</p>
-    `)
-  }, [])
+    if (props.code) {
+      setCode(props.code)
+
+    }
+  }, [props])
 
   return (
     <div className='flex flex-1 w-screen flex-row'>
@@ -21,9 +28,7 @@ export default function HtmlEditor() {
           height="50vh"
           theme='vs-dark'
           defaultLanguage="html"
-          defaultValue={`<h1>Hello</h1>
-<p>start editing to see changes</p>
-    `}
+          defaultValue={code}
           onChange={(e) => setCode(e)}
         />
       </div>
