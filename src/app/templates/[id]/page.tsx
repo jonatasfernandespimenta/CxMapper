@@ -10,6 +10,7 @@ interface ICreateTemplateScreen {
   templateName?: string
   templateDescription?: string
   subject?: string
+  type: 'E-Mail' | 'Text'
 }
 
 export default function EditTemplate({ params }: { params: { id: string } }) {
@@ -22,6 +23,6 @@ export default function EditTemplate({ params }: { params: { id: string } }) {
   }, [params.id])
 
   return (
-    <CreateTemplateScreen templateInfo={templateInfo} />
+    <CreateTemplateScreen type={templateInfo?.type} templateInfo={templateInfo} />
   )
 }

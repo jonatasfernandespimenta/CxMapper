@@ -12,9 +12,10 @@ interface ITemplateInfo {
 
 interface ICreateTemplateScreen {
   templateInfo?: ITemplateInfo
+  type?: 'E-Mail' | 'Text'
 }
 
-export default function CreateTemplateScreen({ templateInfo }: ICreateTemplateScreen) {
+export default function CreateTemplateScreen({ templateInfo, type }: ICreateTemplateScreen) {
   return (
     <MainLayout>
       <TemplateCreationInfo
@@ -24,7 +25,9 @@ export default function CreateTemplateScreen({ templateInfo }: ICreateTemplateSc
         subject={templateInfo?.subject}
       />
 
-      <HtmlEditor code={templateInfo?.code} />
+      {
+        type === 'E-Mail' ? (<HtmlEditor code={templateInfo?.code} />) : <textarea className="w-1/4 h-96" value={templateInfo?.code} />
+      }
     </MainLayout>
   )
 }

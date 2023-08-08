@@ -78,7 +78,7 @@ export default function TemplateCreationContent(props: ITemplateCreationContent)
 
         </div>
         <div className="mt-2">
-          <Button handlePress={saveTemplate} text="Create" />
+          <Button handlePress={saveTemplate} text="Save" />
         </div>
       </div>
 

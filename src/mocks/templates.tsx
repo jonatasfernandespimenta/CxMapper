@@ -7,6 +7,7 @@ interface ITemplate {
   templateName: string
   templateDescription: string
   subject: string
+  type: 'E-Mail' | 'Text'
 }
 
 export const templatesMock: ITemplate[] = [
@@ -16,6 +17,16 @@ export const templatesMock: ITemplate[] = [
     dataset: "1",
     subject: "1",
     templateDescription: "Template de email para dar boas vindas ao cliente",
-    templateName: "Template Boas Vindas"
+    templateName: "Template Boas Vindas",
+    type: 'E-Mail'
+  },
+  {
+    id: "2",
+    code: "Olá {{ User.Nome }}, sejá bem vindo a plataforma",
+    dataset: "1",
+    subject: "1",
+    templateDescription: "Template de mensagem para dar boas vindas ao cliente",
+    templateName: "Template Boas Vindas SMS",
+    type: 'Text'
   }
 ]

@@ -24,7 +24,7 @@ export const emailTemplates = [
         <td width="17%"><img src="https://d1uc0n8snbuti9.cloudfront.net/nova-marca/prev/ExtratoTradicional/EmailExtratoTradicional_03_02.png" width="101" height="100" alt=""/></td>
         <td width="4%">&nbsp;</td>
         <td width="57%"><p style="font-family: Arial, 'sans-serif'; font-size: 16px; color: #001d61; text-align: left; line-height: 20px">
-            <b>Prezado(a), |primeiro_nome|</b><br><br>
+            <b>Prezado(a), {{ User.Nome }}</b><br><br>
   
             <b>Extrato Digital?</b> É a <b>SAS</b> conectada com você em qualquer lugar!  
   

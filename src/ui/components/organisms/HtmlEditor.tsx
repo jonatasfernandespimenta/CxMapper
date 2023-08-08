@@ -25,7 +25,7 @@ export default function HtmlEditor(props: IHtmlEditor) {
     <div className='flex flex-1 w-screen flex-row'>
       <div className='flex flex-1'>
         <Editor
-          height="50vh"
+          height="60vh"
           theme='vs-dark'
           defaultLanguage="html"
           defaultValue={code}
