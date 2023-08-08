@@ -5,6 +5,7 @@ import MainLayout from "../layouts/MainLayout";
 import { useState } from "react";
 import FolderBox from "../components/atoms/FolderBox";
 import CreateBoxModal from "../components/organisms/CreateBoxModal";
+import Input from "../components/atoms/Input";
 
 interface NewBoxFormValues {
   boxName: string;
@@ -27,10 +28,15 @@ export default function Boxes() {
     }
   ]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>('')
 
   function handleChange(values: NewBoxFormValues) {
     setIsModalOpen(false);
     setBoxes([...boxes, { name: values.boxName, id: new Date().getTime().toString() }])
+  }
+
+  function handleSearchChange(value: string) {
+    setSearch(value)
   }
 
   return (
@@ -45,10 +51,15 @@ export default function Boxes() {
         <div className="mb-6">
           <h1 className="font-semibold">My boxes</h1>
         </div>
+
+        <div className="mb-6">
+          <Input placeholder="Search..." value={search} onChange={(e) => handleSearchChange(e.target.value)} />
+        </div>
+
         <div className="flex flex-row gap-4 flex-wrap">
           <AddMap onClick={() => setIsModalOpen(!isModalOpen)} />
 
-          {boxes.map((box, idx) => (
+          {boxes.filter(box => box.name.toLowerCase().includes(search)).map((box, idx) => (
             <div className="flex flex-wrap gap-2" key={idx}>
               <FolderBox name={box.name} key={box.id} />
             </div>
