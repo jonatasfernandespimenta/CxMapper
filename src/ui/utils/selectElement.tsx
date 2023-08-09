@@ -1,4 +1,4 @@
-import ActionWrapper from "../components/molecules/ActionWrapper";
+import ActionWrapper from "../components/organisms/ActionWrapper";
 import Condition from "../components/molecules/Condition";
 
 interface ISelectElement {

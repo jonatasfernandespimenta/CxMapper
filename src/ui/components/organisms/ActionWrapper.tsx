@@ -1,6 +1,6 @@
 "use client";
 
-import Action from "./Action";
+import Action from "../molecules/Action";
 import { IItem, useRulerData } from "@/contexts/RulerContext";
 import { useEffect, useState } from "react";;
 import { ItemTypes } from "@/@types/IActionProps";
