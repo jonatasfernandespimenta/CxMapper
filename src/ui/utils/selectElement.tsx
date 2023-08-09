@@ -17,6 +17,7 @@ export function selectElement({ text, itemId, icon }: ISelectElement) {
     PDF: <ActionWrapper itemType="pdf" actionName={text} actionIcon={icon} itemId={itemId} />,
     Trigger: <ActionWrapper itemType="trigger" actionName={text} actionIcon={icon} itemId={itemId} />,
     Timer: <ActionWrapper itemType="timer" actionName={text} actionIcon={icon} itemId={itemId} />,
+    Script: <ActionWrapper itemType="script" actionName={text} actionIcon={icon} itemId={itemId} />,
   };
 
   // @ts-ignore

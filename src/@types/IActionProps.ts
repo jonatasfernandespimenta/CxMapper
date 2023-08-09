@@ -10,6 +10,11 @@ export interface WhatsappProps {
   message: string;
 }
 
+export interface ScriptProps {
+  script: string
+  action: string
+}
+
 export interface PdfProps {
   template: string;
   dataset: string;
@@ -58,6 +63,7 @@ export type ItemTypes =
   | "pdf"
   | "trigger"
   | "timer"
+  | "script"
 
 type ItemWithType<T extends ItemTypes> = T extends "condition"
   ? ConditionProps[]
@@ -75,6 +81,8 @@ type ItemWithType<T extends ItemTypes> = T extends "condition"
   ? TriggerProps
   : T extends "timer"
   ? TimerProps
+  : T extends 'script'
+  ? ScriptProps
   : never;
 
 export interface IActionProps<T extends ItemTypes> {

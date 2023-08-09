@@ -42,7 +42,7 @@ export const actionsMenuOptions: IActionsMenuOption[] = [
   {
     icon: <FaScroll />,
     text: "Script",
-    type: "whatsapp",
+    type: "script",
   },
   {
     icon: <FaQuestion />,
