@@ -1,5 +1,5 @@
-import Box from "../atoms/Box";
-import Tag from "../atoms/Tag";
+import Box from '../atoms/Box';
+import Tag from '../atoms/Tag';
 
 interface IMap {
   name: string;

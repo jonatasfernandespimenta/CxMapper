@@ -1,5 +1,5 @@
-import Box from "../atoms/Box";
-import Tag from "../atoms/Tag";
+import Box from '../atoms/Box';
+import Tag from '../atoms/Tag';
 
 interface ITemplateBox {
   name: string
@@ -17,5 +17,5 @@ export default function TemplateBox({ description, name, tag }: ITemplateBox) {
         <Tag text={tag} />
       </div>
     </Box>
-  )
+  );
 }

@@ -1,3 +1,3 @@
 export default function CustomerDetails() {
-  return <></>;
+  return <div />;
 }

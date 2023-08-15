@@ -1,6 +1,6 @@
-import ReactSelect, { Props } from "react-select";
-import { FaPlus } from "react-icons/fa";
-import MySelect from "./MySelect";
+import { Props } from 'react-select';
+import { FaPlus } from 'react-icons/fa';
+import MySelect from './MySelect';
 
 interface ISelectSearchOrCreate extends Props {
   onClick?: () => void;

@@ -1,4 +1,4 @@
-import CreateNewScriptForm from "../molecules/CreateNewScriptForm";
+import CreateNewScriptForm from '../molecules/CreateNewScriptForm';
 
 interface NewScriptFormValues {
   scriptName: string;

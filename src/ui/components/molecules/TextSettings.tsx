@@ -1,28 +1,27 @@
-"use client";
+'use client';
 
-import { IItem, useRulerData } from "@/contexts/RulerContext";
-import { useEffect, useState } from "react";
-import TextArea from "../atoms/TextArea";
-import Select from "../atoms/Select";
-import SelectSearchOrCreate from "../atoms/SelectSearchOrCreate";
-import { useRouter } from "next/router";
-import Input from "../atoms/Input";
+import { useEffect, useState } from 'react';
+import { IItem, useRulerData } from '@/contexts/RulerContext';
+import TextArea from '../atoms/TextArea';
+import Select from '../atoms/Select';
+import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate';
+import Input from '../atoms/Input';
 
 interface IEmailSettings {
-  item: IItem<"whatsapp">;
+  item: IItem<'whatsapp'>;
 }
 
 export default function TextSettings({ item }: IEmailSettings) {
   const { items, setItems } = useRulerData();
 
-  const [to, setTo] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
-  const [template, setTemplate] = useState<string | undefined>("");
-  const [dataset, setDataset] = useState<string | undefined>("");
-  const [actionDescription, setActionDescription] = useState<string>("");
+  const [to, setTo] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
+  const [template, setTemplate] = useState<string | undefined>('');
+  const [dataset, setDataset] = useState<string | undefined>('');
+  const [actionDescription, setActionDescription] = useState<string>('');
 
   function saveProps() {
-    const updatedItem: IItem<"whatsapp"> = {
+    const updatedItem: IItem<'whatsapp'> = {
       ...item,
       description: actionDescription,
       props: {
@@ -40,12 +39,12 @@ export default function TextSettings({ item }: IEmailSettings) {
   }
 
   useEffect(() => {
-    saveProps()
-  }, [to, message, template, dataset, actionDescription])
+    saveProps();
+  }, [to, message, template, dataset, actionDescription]);
 
   const optionList = [
-    { value: "1", label: "Welcome" },
-    { value: "2", label: "Newsletter" },
+    { value: '1', label: 'Welcome' },
+    { value: '2', label: 'Newsletter' },
   ];
 
   return (

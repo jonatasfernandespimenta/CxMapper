@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import AddMap from "../components/molecules/AddMap";
-import MainLayout from "../layouts/MainLayout";
-import { useState } from "react";
-import Input from "../components/atoms/Input";
-import CreateDatasetModal from "../components/organisms/CreateDatasetModal";
-import DatasetBox from "../components/atoms/DatasetBox";
+import { useState } from 'react';
+import AddMap from '../components/molecules/AddMap';
+import MainLayout from '../layouts/MainLayout';
+import Input from '../components/atoms/Input';
+import CreateDatasetModal from '../components/organisms/CreateDatasetModal';
+import DatasetBox from '../components/atoms/DatasetBox';
 
 interface NewDatasetFormValues {
   datasetName: string;
@@ -20,23 +20,23 @@ export default function Datasets() {
   const [datasets, setDatasets] = useState<IDataset[]>([
     {
       name: 'Welcome',
-      id: new Date().toString()
+      id: new Date().toString(),
     },
     {
       name: 'Newsletter',
-      id: new Date().toString()
-    }
+      id: new Date().toString(),
+    },
   ]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [search, setSearch] = useState<string>('')
+  const [search, setSearch] = useState<string>('');
 
   function handleChange(values: NewDatasetFormValues) {
     setIsModalOpen(false);
-    setDatasets([...datasets, { name: values.datasetName, id: new Date().getTime().toString() }])
+    setDatasets([...datasets, { name: values.datasetName, id: new Date().getTime().toString() }]);
   }
 
   function handleSearchChange(value: string) {
-    setSearch(value)
+    setSearch(value);
   }
 
   return (
@@ -59,7 +59,7 @@ export default function Datasets() {
         <div className="flex flex-row gap-4 flex-wrap">
           <AddMap onClick={() => setIsModalOpen(!isModalOpen)} />
 
-          {datasets.filter(box => box.name.toLowerCase().includes(search)).map((box, idx) => (
+          {datasets.filter((box) => box.name.toLowerCase().includes(search)).map((box, idx) => (
             <div className="flex flex-wrap gap-2" key={idx}>
               <DatasetBox name={box.name} key={box.id} />
             </div>
@@ -69,4 +69,3 @@ export default function Datasets() {
     </>
   );
 }
-

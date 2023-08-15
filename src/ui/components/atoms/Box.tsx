@@ -1,7 +1,7 @@
 interface IBox {
   children: JSX.Element | JSX.Element[];
   shadow?: boolean;
-  borderStyle?: "solid" | "dashed";
+  borderStyle?: 'solid' | 'dashed';
   className?: string;
   onClick?: () => void;
 }
@@ -9,7 +9,7 @@ interface IBox {
 export default function Box({
   children,
   shadow = true,
-  borderStyle = "solid",
+  borderStyle = 'solid',
   className,
   onClick,
 }: IBox) {
@@ -18,9 +18,9 @@ export default function Box({
       onClick={onClick}
       className={`
         p-4
-        ${shadow && "shadow"} 
+        ${shadow && 'shadow'} 
         rounded-md 
-        border-${borderStyle === "solid" ? "[1px]" : "2"} 
+        border-${borderStyle === 'solid' ? '[1px]' : '2'} 
         border-${borderStyle} 
         w-52 
         cursor-pointer 

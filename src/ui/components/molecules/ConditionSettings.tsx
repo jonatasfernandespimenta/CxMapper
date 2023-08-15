@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { IItem, useRulerData } from "@/contexts/RulerContext";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { FaPlus } from "react-icons/fa";
-import { ConditionProps } from "@/@types/IActionProps";
-import ConditionForm from "./ConditionForm";
+import { FaPlus } from 'react-icons/fa';
+import { IItem, useRulerData } from '@/contexts/RulerContext';
+import { ConditionProps } from '@/@types/IActionProps';
+import ConditionForm from './ConditionForm';
 
 interface IConditionSettings {
-  item: IItem<"condition">;
+  item: IItem<'condition'>;
 }
 
 export default function ConditionSettings({ item }: IConditionSettings) {
@@ -19,7 +19,7 @@ export default function ConditionSettings({ item }: IConditionSettings) {
   ]);
 
   function saveProps() {
-    const updatedItem: IItem<"condition"> = {
+    const updatedItem: IItem<'condition'> = {
       ...item,
       props: conditions,
     };

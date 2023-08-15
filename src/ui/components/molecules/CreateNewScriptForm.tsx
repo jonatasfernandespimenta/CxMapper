@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import Input from "../atoms/Input";
-import Button from "../atoms/Button";
+import { useState } from 'react';
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 interface NewScriptFormValues {
   scriptName: string;
@@ -11,7 +11,7 @@ interface ICreateNewScriptForm {
 }
 
 export default function CreateNewScriptForm({ handleChange }: ICreateNewScriptForm) {
-  const [scriptName, setScriptName] = useState<string>("");
+  const [scriptName, setScriptName] = useState<string>('');
 
   function handlePress() {
     handleChange({ scriptName });

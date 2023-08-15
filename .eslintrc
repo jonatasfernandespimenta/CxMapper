@@ -1,0 +1,38 @@
+{
+  "extends": [
+    "airbnb",
+    "airbnb-typescript"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "eslint-plugin-import-helpers"],
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/style-prop-object": 0,
+    "react/require-default-props": 0,
+    "no-nested-ternary": 0,
+    "@next/next/no-html-link-for-pages": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react/jsx-no-bind": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "react/no-array-index-key": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "": "never",
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ]
+  }
+}

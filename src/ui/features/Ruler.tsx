@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import MainLayout from "../layouts/MainLayout";
-import Rule from "../components/organisms/Rule";
-import { useRouter } from "next/navigation";
-import { useMapData } from "@/contexts/MapContext";
-
+import { useRouter } from 'next/navigation';
 import { FaPlay } from 'react-icons/fa';
-import { useEffect, useState } from "react";
-import Spinner from "../components/atoms/Spinner";
-
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import MySelect from "../components/atoms/MySelect";
+import MainLayout from '../layouts/MainLayout';
+import Rule from '../components/organisms/Rule';
+import { useMapData } from '@/contexts/MapContext';
+
+import Spinner from '../components/atoms/Spinner';
+
+import MySelect from '../components/atoms/MySelect';
 
 const optionList = [
-  { value: "1", label: "All" },
-  { value: "2", label: "#37489" },
-  { value: "3", label: "#73894" },
+  { value: '1', label: 'All' },
+  { value: '2', label: '#37489' },
+  { value: '3', label: '#73894' },
 ];
 
 export default function RulerScreen() {
@@ -26,31 +26,31 @@ export default function RulerScreen() {
   useEffect(() => {
     if (executing) {
       toast.warn('Executing Job', {
-        position: "top-right",
+        position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: 'colored',
       });
 
       setTimeout(() => {
         toast.success('Job executed!', {
-          position: "top-right",
+          position: 'top-right',
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "colored",
+          theme: 'colored',
         });
-        setIsExecuting(false)
+        setIsExecuting(false);
       }, 2000);
     }
-  }, [executing])
+  }, [executing]);
 
   return (
     <MainLayout>
@@ -58,9 +58,10 @@ export default function RulerScreen() {
         <div className="fixed bg-white ">
           <h1
             className="text-gray-400 font-semibold cursor-pointer mt-4"
-            onClick={() => router.push("/maps")}
+            onClick={() => router.push('/maps')}
           >
-            SEGSig Seguros | Odonto |{" "}
+            SEGSig Seguros | Odonto |
+            {' '}
             <span className="text-green-500">Proposta</span>
           </h1>
 
@@ -83,7 +84,6 @@ export default function RulerScreen() {
 
           </div>
         </div>
-
 
         <div className="mt-52">
           <Rule />

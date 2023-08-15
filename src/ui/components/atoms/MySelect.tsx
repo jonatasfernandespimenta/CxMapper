@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import Select, { Props } from "react-select";
+import { useEffect, useState } from 'react';
+import Select, { Props } from 'react-select';
 
 interface IMySelect extends Props {
 
 }
 
-const MySelect = ({
+function MySelect({
   ...props
-}: IMySelect) => {
+}: IMySelect) {
   const id = Date.now().toString();
   const [isMounted, setIsMounted] = useState(false);
 
@@ -20,6 +20,6 @@ const MySelect = ({
       classNamePrefix="my-select"
     />
   ) : null;
-};
+}
 
 export default MySelect;

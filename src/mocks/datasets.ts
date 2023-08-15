@@ -4,13 +4,13 @@ export const datasets = [
     datasetName: 'Welcome',
     data: [{
       Email: {
-        Subject: 'Olá'
+        Subject: 'Olá',
       },
       User: {
         Email: 'fulanodetal@gmail.com',
         Phone: '+55 99999999999',
-        Name: 'Fulano de Tal'
-      }
-    }]
-  }
-]
+        Name: 'Fulano de Tal',
+      },
+    }],
+  },
+];

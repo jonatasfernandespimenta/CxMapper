@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { IItem, useRulerData } from "@/contexts/RulerContext";
-import { useEffect, useState } from "react";
-import Select from "../atoms/Select";
-import Input from "../atoms/Input";
-import Toggle from "../atoms/Toggle";
+import { useEffect, useState } from 'react';
+import { IItem, useRulerData } from '@/contexts/RulerContext';
+import Select from '../atoms/Select';
+import Input from '../atoms/Input';
+import Toggle from '../atoms/Toggle';
 
 interface ITimerSettings {
-  item: IItem<"timer">;
+  item: IItem<'timer'>;
 }
 
 export default function TimerSettings({ item }: ITimerSettings) {
   const { items, setItems } = useRulerData();
 
-  const [expression, setExpression] = useState("")
-  const [actionDescription, setActionDescription] = useState("")
-  const [type, setType] = useState(false)
+  const [expression, setExpression] = useState('');
+  const [actionDescription, setActionDescription] = useState('');
+  const [type, setType] = useState(false);
 
   function saveProps() {
-    const updatedItem: IItem<"timer"> = {
+    const updatedItem: IItem<'timer'> = {
       ...item,
       description: actionDescription,
       props: {
@@ -36,7 +36,7 @@ export default function TimerSettings({ item }: ITimerSettings) {
 
   useEffect(() => {
     saveProps();
-  }, [expression, actionDescription])
+  }, [expression, actionDescription]);
 
   return (
     <div className="flex flex-col gap-4 text-black">
@@ -66,17 +66,18 @@ export default function TimerSettings({ item }: ITimerSettings) {
               <p>Cron Expression</p>
               <Input value={expression} onChange={(e) => setExpression(e.target.value)} />
             </div>
-          ) :
-            <Select value={expression} onChange={(e) => setExpression(e.target.value)}>
-              <option>Every minute</option>
-              <option>Every hour</option>
-              <option>Every 12 hours</option>
-              <option>Everyday</option>
-            </Select>
+          )
+            : (
+              <Select value={expression} onChange={(e) => setExpression(e.target.value)}>
+                <option>Every minute</option>
+                <option>Every hour</option>
+                <option>Every 12 hours</option>
+                <option>Everyday</option>
+              </Select>
+            )
         }
       </div>
 
     </div>
   );
 }
-

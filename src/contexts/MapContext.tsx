@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from 'react';
 
 interface IMapContextType {
   activeItem: string;
@@ -14,21 +14,20 @@ interface IMapContextProvider {
 }
 
 export const MapContext = React.createContext<IMapContextType>(
-  {} as IMapContextType
+  {} as IMapContextType,
 );
 
 export default function MapContextProvider({ children }: IMapContextProvider) {
-  const [activeItem, setActiveItem] = useState("");
-  const [jobFilter, setJobFilter] = useState("");
+  const [activeItem, setActiveItem] = useState('');
+  const [jobFilter, setJobFilter] = useState('');
+
+  const value = useMemo(() => ({
+    activeItem, setActiveItem, jobFilter, setJobFilter,
+  }), [activeItem, setActiveItem, jobFilter, setJobFilter]);
 
   return (
     <MapContext.Provider
-      value={{
-        activeItem,
-        setActiveItem,
-        jobFilter,
-        setJobFilter,
-      }}
+      value={value}
     >
       {children}
     </MapContext.Provider>
@@ -39,7 +38,7 @@ export function useMapData() {
   const context = React.useContext(MapContext);
 
   if (context === undefined) {
-    throw new Error("useMapData must be used within a MapContextProvider");
+    throw new Error('useMapData must be used within a MapContextProvider');
   }
 
   return context;

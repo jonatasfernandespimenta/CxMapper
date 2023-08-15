@@ -1,4 +1,4 @@
-import ScriptCreationContent from "../molecules/ScriptCreationContent";
+import ScriptCreationContent from '../molecules/ScriptCreationContent';
 
 interface IScriptCreationInfo {
   dataset?: string
@@ -7,7 +7,9 @@ interface IScriptCreationInfo {
   subject?: string
 }
 
-export default function ScriptCreationInfo({ scriptName, scriptDescription, subject, dataset }: IScriptCreationInfo) {
+export default function ScriptCreationInfo({
+  scriptName, scriptDescription, subject, dataset,
+}: IScriptCreationInfo) {
   return (
     <div>
       <div className="font-bold mb-4">
@@ -20,5 +22,5 @@ export default function ScriptCreationInfo({ scriptName, scriptDescription, subj
         subject={subject}
       />
     </div>
-  )
+  );
 }

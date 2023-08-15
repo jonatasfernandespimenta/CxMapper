@@ -1,4 +1,4 @@
-import CreateNewTemplateForm from "../molecules/CreateNewTemplateForm";
+import CreateNewTemplateForm from '../molecules/CreateNewTemplateForm';
 
 interface NewTemplateFormValues {
   templateName: string;

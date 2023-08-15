@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import AddMap from "../components/molecules/AddMap";
-import Map from "../components/molecules/Map";
-import MainLayout from "../layouts/MainLayout";
-import CreateMapModal from "../components/organisms/CreateMapModal";
-import { useState } from "react";
-import Dropdown from "../components/molecules/Dropdown";
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import AddMap from '../components/molecules/AddMap';
+import Map from '../components/molecules/Map';
+import MainLayout from '../layouts/MainLayout';
+import CreateMapModal from '../components/organisms/CreateMapModal';
+import Dropdown from '../components/molecules/Dropdown';
 
 interface NewMapFormValues {
   mapName: string;
@@ -24,7 +24,10 @@ export default function Maps() {
   const router = useRouter();
 
   function handleChange(values: NewMapFormValues) {
-    setMaps([...maps, <Map tag={values.businessLine} name={values.mapName} key={Date.now().toString()} />]);
+    setMaps([
+      ...maps,
+      <Map tag={values.businessLine} name={values.mapName} key={Date.now().toString()} />,
+    ]);
     setIsModalOpen(false);
   }
 

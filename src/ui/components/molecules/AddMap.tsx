@@ -1,5 +1,5 @@
-import Box from "../atoms/Box";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle } from 'react-icons/fa';
+import Box from '../atoms/Box';
 
 interface IAddMap {
   onClick: () => void;

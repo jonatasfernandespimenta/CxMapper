@@ -154,5 +154,5 @@ export const emailTemplates = [
   </table>
   <!-- End Save for Web Slices -->
   </body>
-  </html>`
-]
+  </html>`,
+];

@@ -1,26 +1,26 @@
-"use client";
+'use client';
 
-import { IItem, useRulerData } from "@/contexts/RulerContext";
-import { useEffect, useState } from "react";
-import Select from "../atoms/Select";
-import Input from "../atoms/Input";
-import MySelect from "../atoms/MySelect";
+import { useEffect, useState } from 'react';
+import { IItem, useRulerData } from '@/contexts/RulerContext';
+import Select from '../atoms/Select';
+import Input from '../atoms/Input';
+import MySelect from '../atoms/MySelect';
 
 interface IFileManagerSettings {
-  item: IItem<"file_manager">;
+  item: IItem<'file_manager'>;
 }
 
 export default function FileManagerSettings({ item }: IFileManagerSettings) {
   const { items, setItems } = useRulerData();
 
-  const [action, setAction] = useState<string>("copy");
-  const [from, setFrom] = useState<string>("");
-  const [to, setTo] = useState<string>("");
-  const [file, setFile] = useState<string>("");
-  const [actionDescription, setActionDescription] = useState<string>("")
+  const [action, setAction] = useState<string>('copy');
+  const [from, setFrom] = useState<string>('');
+  const [to, setTo] = useState<string>('');
+  const [file, setFile] = useState<string>('');
+  const [actionDescription, setActionDescription] = useState<string>('');
 
   function saveProps() {
-    const updatedItem: IItem<"file_manager"> = {
+    const updatedItem: IItem<'file_manager'> = {
       ...item,
       description: actionDescription,
       props: {
@@ -44,9 +44,9 @@ export default function FileManagerSettings({ item }: IFileManagerSettings) {
   }, [to, action, from, actionDescription]);
 
   const optionList = [
-    { value: "1", label: "copy" },
-    { value: "2", label: "cut" },
-    { value: "3", label: "delete" },
+    { value: '1', label: 'copy' },
+    { value: '2', label: 'cut' },
+    { value: '3', label: 'delete' },
   ];
 
   return (
@@ -83,7 +83,7 @@ export default function FileManagerSettings({ item }: IFileManagerSettings) {
         </Select>
       </div>
 
-      {action !== "3" && (
+      {action !== '3' && (
         <div>
           <p>To</p>
           <Select value={to} onChange={(e) => setTo(e.target.value)}>

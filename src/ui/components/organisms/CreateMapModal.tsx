@@ -1,4 +1,4 @@
-import CreateNewMapForm from "../molecules/CreateNewMapForm";
+import CreateNewMapForm from '../molecules/CreateNewMapForm';
 
 interface NewMapFormValues {
   mapName: string;

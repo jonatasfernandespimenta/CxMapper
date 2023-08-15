@@ -1,4 +1,4 @@
-import { FaPlus } from "react-icons/fa";
+import { FaPlus } from 'react-icons/fa';
 
 interface IAddActionButton {
   onClick?: () => void;

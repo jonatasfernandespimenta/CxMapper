@@ -1,13 +1,13 @@
-import { ItemTypes } from "@/@types/IActionProps";
-import ConditionSettings from "../components/molecules/ConditionSettings";
-import { IItem } from "@/contexts/RulerContext";
-import EmailSettings from "../components/molecules/EmailSettings";
-import TextSettings from "../components/molecules/TextSettings";
-import FileManagerSettings from "../components/molecules/FileManagerSettings";
-import PdfSettings from "../components/molecules/PdfSettings";
-import TriggerSettings from "../components/molecules/TriggerSettings";
-import TimerSettings from "../components/molecules/TimerSettings";
-import ScriptSettings from "../components/molecules/ScriptSettings";
+import { ItemTypes } from '@/@types/IActionProps';
+import ConditionSettings from '../components/molecules/ConditionSettings';
+import { IItem } from '@/contexts/RulerContext';
+import EmailSettings from '../components/molecules/EmailSettings';
+import TextSettings from '../components/molecules/TextSettings';
+import FileManagerSettings from '../components/molecules/FileManagerSettings';
+import PdfSettings from '../components/molecules/PdfSettings';
+import TriggerSettings from '../components/molecules/TriggerSettings';
+import TimerSettings from '../components/molecules/TimerSettings';
+import ScriptSettings from '../components/molecules/ScriptSettings';
 
 interface ISelectSettings {
   type: ItemTypes;
@@ -24,9 +24,9 @@ export function selectSettings({ type, item }: ISelectSettings) {
     pdf: <PdfSettings item={item} />,
     trigger: <TriggerSettings item={item} />,
     timer: <TimerSettings item={item} />,
-    script: <ScriptSettings item={item} />
+    script: <ScriptSettings item={item} />,
   };
 
-  //@ts-ignore
-  return elements[type]
+  // @ts-ignore
+  return elements[type];
 }

@@ -1,7 +1,6 @@
-'use client'
+'use client';
 
-import EditscriptScreen from "@/ui/features/EditScript";
-import { useEffect, useState } from "react";
+import EditscriptScreen from '@/ui/features/EditScript';
 
 interface IScriptInfo {
   scriptName: string
@@ -9,5 +8,5 @@ interface IScriptInfo {
 }
 
 export default function ViewScript({ params }: { params: { id: string } }) {
-  return <EditscriptScreen scriptInfo={{}} />
+  return <EditscriptScreen scriptInfo={{}} />;
 }

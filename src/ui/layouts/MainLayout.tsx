@@ -1,5 +1,5 @@
-import { ToastContainer } from "react-toastify";
-import NavBar from "../components/organisms/NavBar";
+import { ToastContainer } from 'react-toastify';
+import NavBar from '../components/organisms/NavBar';
 
 interface IMainLayout {
   children: JSX.Element | JSX.Element[];

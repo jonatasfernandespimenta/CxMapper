@@ -1,4 +1,4 @@
-import CreateNewBoxForm from "../molecules/CreateNewBoxForm";
+import CreateNewBoxForm from '../molecules/CreateNewBoxForm';
 
 interface NewBoxFormValues {
   boxName: string;

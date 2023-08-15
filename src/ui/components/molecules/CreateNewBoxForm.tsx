@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import Input from "../atoms/Input";
-import Button from "../atoms/Button";
+import { useState } from 'react';
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 interface NewBoxFormValues {
   boxName: string;
@@ -11,7 +11,7 @@ interface ICreateNewBoxForm {
 }
 
 export default function CreateNewBoxForm({ handleChange }: ICreateNewBoxForm) {
-  const [boxName, setBoxName] = useState<string>("");
+  const [boxName, setBoxName] = useState<string>('');
 
   function handlePress() {
     handleChange({ boxName });

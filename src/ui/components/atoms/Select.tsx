@@ -5,7 +5,7 @@ interface ISelect {
 }
 
 export default function Select({ onChange, value, children }: ISelect) {
-  return(
+  return (
     <select
       value={value}
       onChange={onChange}
@@ -13,5 +13,5 @@ export default function Select({ onChange, value, children }: ISelect) {
     >
       {children}
     </select>
-  )
+  );
 }

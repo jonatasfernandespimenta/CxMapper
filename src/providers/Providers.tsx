@@ -1,4 +1,4 @@
-import MapContextProvider from "@/contexts/MapContext";
+import MapContextProvider from '@/contexts/MapContext';
 
 interface IProviders {
   children: JSX.Element | JSX.Element[];

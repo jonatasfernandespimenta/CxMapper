@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import MenuOption from "../atoms/MenuOption";
-import { IItem, useRulerData } from "@/contexts/RulerContext";
+import { uuid } from 'uuidv4';
+import MenuOption from '../atoms/MenuOption';
+import { IItem, useRulerData } from '@/contexts/RulerContext';
 import {
   IActionsMenuOption,
   actionsMenuOptions,
-} from "@/ui/utils/actionsMenuOptions";
-import { uuid } from "uuidv4";
-import { useMapData } from "@/contexts/MapContext";
-import { selectElement } from "@/ui/utils/selectElement";
+} from '@/ui/utils/actionsMenuOptions';
+import { useMapData } from '@/contexts/MapContext';
+import { selectElement } from '@/ui/utils/selectElement';
 
 export default function ActionsMenu() {
   const { items, setItems } = useRulerData();

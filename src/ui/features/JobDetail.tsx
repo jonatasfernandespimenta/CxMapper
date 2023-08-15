@@ -1,3 +1,3 @@
 export default function JobDetail() {
-  return <div></div>;
+  return <div />;
 }

@@ -1,4 +1,3 @@
-import { ItemTypes } from "@/@types/IActionProps";
 import {
   FaMailBulk,
   FaFilePdf,
@@ -9,8 +8,9 @@ import {
   FaSave,
   FaFolder,
   FaPlay,
-  FaClock
-} from "react-icons/fa";
+  FaClock,
+} from 'react-icons/fa';
+import { ItemTypes } from '@/@types/IActionProps';
 
 export interface IActionsMenuOption {
   icon: JSX.Element;
@@ -21,52 +21,52 @@ export interface IActionsMenuOption {
 export const actionsMenuOptions: IActionsMenuOption[] = [
   {
     icon: <FaMailBulk />,
-    text: "E-Mail",
-    type: "email",
+    text: 'E-Mail',
+    type: 'email',
   },
   {
     icon: <FaFilePdf />,
-    text: "PDF",
-    type: "email",
+    text: 'PDF',
+    type: 'email',
   },
   {
     icon: <FaSms />,
-    text: "SMS",
-    type: "sms",
+    text: 'SMS',
+    type: 'sms',
   },
   {
     icon: <FaWhatsapp />,
-    text: "Whatsapp",
-    type: "whatsapp",
+    text: 'Whatsapp',
+    type: 'whatsapp',
   },
   {
     icon: <FaScroll />,
-    text: "Script",
-    type: "script",
+    text: 'Script',
+    type: 'script',
   },
   {
     icon: <FaQuestion />,
-    text: "Condition",
-    type: "condition",
+    text: 'Condition',
+    type: 'condition',
   },
   {
     icon: <FaSave />,
-    text: "Save",
-    type: "condition",
+    text: 'Save',
+    type: 'condition',
   },
   {
     icon: <FaFolder />,
-    text: "File Manager",
-    type: "condition",
+    text: 'File Manager',
+    type: 'condition',
   },
   {
     icon: <FaPlay />,
-    text: "Trigger",
-    type: "trigger",
+    text: 'Trigger',
+    type: 'trigger',
   },
   {
     icon: <FaClock />,
-    text: "Timer",
-    type: "timer",
+    text: 'Timer',
+    type: 'timer',
   },
 ];

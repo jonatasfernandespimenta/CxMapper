@@ -1,6 +1,6 @@
-import TemplateCreationInfo from "../components/organisms/TemplateCreationInfo";
-import HtmlEditor from "../components/organisms/HtmlEditor";
-import MainLayout from "../layouts/MainLayout";
+import TemplateCreationInfo from '../components/organisms/TemplateCreationInfo';
+import HtmlEditor from '../components/organisms/HtmlEditor';
+import MainLayout from '../layouts/MainLayout';
 
 interface ITemplateInfo {
   code?: string
@@ -29,5 +29,5 @@ export default function CreateTemplateScreen({ templateInfo, type }: ICreateTemp
         type === 'E-Mail' ? (<HtmlEditor code={templateInfo?.code} />) : <textarea className="w-1/4 h-96" value={templateInfo?.code} />
       }
     </MainLayout>
-  )
+  );
 }

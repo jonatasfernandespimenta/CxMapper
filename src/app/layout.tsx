@@ -1,14 +1,14 @@
-import Providers from "@/providers/Providers";
-import "./globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import Providers from '@/providers/Providers';
 import 'react-toastify/dist/ReactToastify.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "CxMapper",
-  description: "Create flows with CxMapper",
+  title: 'CxMapper',
+  description: 'Create flows with CxMapper',
 };
 
 export default function RootLayout({

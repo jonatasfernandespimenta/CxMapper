@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import AddActionButton from "../atoms/AddActionButton";
-import ActionsMenu from "../molecules/ActionsMenu";
-import { useRulerData } from "@/contexts/RulerContext";
+import AddActionButton from '../atoms/AddActionButton';
+import ActionsMenu from '../molecules/ActionsMenu';
+import { useRulerData } from '@/contexts/RulerContext';
 
 export default function AddAction() {
   const { isAddActionMenuOpen, setIsAddActionMenuOpen } = useRulerData();

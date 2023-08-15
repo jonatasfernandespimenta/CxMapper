@@ -1,7 +1,7 @@
 export interface ConditionProps {
   type?: string | null;
   variable: string;
-  condition: ">=" | "<=" | ">" | "<" | "==" | string;
+  condition: '>=' | '<=' | '>' | '<' | '==' | string;
   value: string;
 }
 
@@ -54,36 +54,36 @@ export interface TimerProps {
 }
 
 export type ItemTypes =
-  | "condition"
-  | "email"
-  | "whatsapp"
-  | "sms"
-  | "add"
-  | "file_manager"
-  | "pdf"
-  | "trigger"
-  | "timer"
-  | "script"
+  | 'condition'
+  | 'email'
+  | 'whatsapp'
+  | 'sms'
+  | 'add'
+  | 'file_manager'
+  | 'pdf'
+  | 'trigger'
+  | 'timer'
+  | 'script';
 
-type ItemWithType<T extends ItemTypes> = T extends "condition"
+type ItemWithType<T extends ItemTypes> = T extends 'condition'
   ? ConditionProps[]
-  : T extends "email"
-  ? EmailProps
-  : T extends "whatsapp"
-  ? WhatsappProps
-  : T extends "sms"
-  ? SmsProps
-  : T extends "file_manager"
-  ? FileManagerProps
-  : T extends "pdf"
-  ? PdfProps
-  : T extends "trigger"
-  ? TriggerProps
-  : T extends "timer"
-  ? TimerProps
-  : T extends 'script'
-  ? ScriptProps
-  : never;
+  : T extends 'email'
+    ? EmailProps
+    : T extends 'whatsapp'
+      ? WhatsappProps
+      : T extends 'sms'
+        ? SmsProps
+        : T extends 'file_manager'
+          ? FileManagerProps
+          : T extends 'pdf'
+            ? PdfProps
+            : T extends 'trigger'
+              ? TriggerProps
+              : T extends 'timer'
+                ? TimerProps
+                : T extends 'script'
+                  ? ScriptProps
+                  : never;
 
 export interface IActionProps<T extends ItemTypes> {
   props: ItemWithType<T> | null;

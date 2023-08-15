@@ -4,7 +4,9 @@ interface IInput extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
 }
 
-export default function Input({ onChange, value, placeholder, ...rest }: IInput) {
+export default function Input({
+  onChange, value, placeholder, ...rest
+}: IInput) {
   return (
     <input
       value={value}

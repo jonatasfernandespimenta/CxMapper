@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import { IItem, useRulerData } from "@/contexts/RulerContext";
-import { useEffect, useState } from "react";
-import Input from "../atoms/Input";
-import Select from "../atoms/Select";
+import { useEffect, useState } from 'react';
+import { IItem, useRulerData } from '@/contexts/RulerContext';
+import Input from '../atoms/Input';
+import Select from '../atoms/Select';
 
 interface IScriptSettings {
-  item: IItem<"script">;
+  item: IItem<'script'>;
 }
 
 export default function ScriptSettings({ item }: IScriptSettings) {
   const { items, setItems } = useRulerData();
 
-  const [script, setScript] = useState<string>("");
-  const [action, setAction] = useState<string>("");
-  const [actionDescription, setActionDescription] = useState<string>("");
+  const [script, setScript] = useState<string>('');
+  const [action, setAction] = useState<string>('');
+  const [actionDescription, setActionDescription] = useState<string>('');
 
   function saveProps() {
-    const updatedItem: IItem<"script"> = {
+    const updatedItem: IItem<'script'> = {
       ...item,
       description: actionDescription,
       props: {
         script,
-        action
+        action,
       },
     };
 

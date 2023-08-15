@@ -1,8 +1,8 @@
-import ScriptCreationInfo from "../components/organisms/ScriptCreationInfo";
-import HtmlEditor from "../components/organisms/HtmlEditor";
-import MainLayout from "../layouts/MainLayout";
-import Editor from '@monaco-editor/react'
-import { useState } from "react";
+import Editor from '@monaco-editor/react';
+import { useState } from 'react';
+import ScriptCreationInfo from '../components/organisms/ScriptCreationInfo';
+import HtmlEditor from '../components/organisms/HtmlEditor';
+import MainLayout from '../layouts/MainLayout';
 
 interface IScriptInfo {
   code?: string
@@ -18,7 +18,7 @@ interface IEditscriptScreen {
 }
 
 export default function EditscriptScreen({ scriptInfo, type }: IEditscriptScreen) {
-  const [code, setCode] = useState<string | undefined>("")
+  const [code, setCode] = useState<string | undefined>('');
 
   return (
     <MainLayout>
@@ -31,12 +31,12 @@ export default function EditscriptScreen({ scriptInfo, type }: IEditscriptScreen
 
       <Editor
         height="60vh"
-        theme='vs-dark'
+        theme="vs-dark"
         defaultLanguage="javascript"
         language="javascript"
         defaultValue={code}
         onChange={(e) => setCode(e)}
       />
     </MainLayout>
-  )
+  );
 }

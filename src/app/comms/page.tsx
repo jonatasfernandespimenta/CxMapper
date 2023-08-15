@@ -1,5 +1,5 @@
-import Boxes from "@/ui/features/Boxes";
+import Boxes from '@/ui/features/Boxes';
 
 export default function Comms() {
-  return (<Boxes />)
+  return (<Boxes />);
 }

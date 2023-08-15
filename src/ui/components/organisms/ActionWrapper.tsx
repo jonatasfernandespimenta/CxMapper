@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Action from "../molecules/Action";
-import { IItem, useRulerData } from "@/contexts/RulerContext";
-import { useEffect, useState } from "react";;
-import { ItemTypes } from "@/@types/IActionProps";
-import { selectSettings } from "@/ui/utils/selectSettings";
+import { useEffect, useState } from 'react';
+import Action from '../molecules/Action';
+import { IItem, useRulerData } from '@/contexts/RulerContext';
+import { ItemTypes } from '@/@types/IActionProps';
+import { selectSettings } from '@/ui/utils/selectSettings';
 
 interface IActionWrapper {
   itemId: string;
@@ -13,24 +13,26 @@ interface IActionWrapper {
   actionIcon: JSX.Element
 }
 
-export default function ActionWrapper({ itemId, itemType, actionName, actionIcon }: IActionWrapper) {
+export default function ActionWrapper({
+  itemId, itemType, actionName, actionIcon,
+}: IActionWrapper) {
   const { items } = useRulerData();
 
   const [item, setItem] = useState<IItem<typeof itemType>>({} as IItem<typeof itemType>);
-  const [settings, setSettings] = useState()
+  const [settings, setSettings] = useState();
 
   useEffect(() => {
     const foundItem = items.find((i) => i.id === itemId);
     if (foundItem) {
-      const _item: IItem<typeof itemType> = foundItem;
-      setItem(_item);
+      const typedFoundItem: IItem<typeof itemType> = foundItem;
+      setItem(typedFoundItem);
     }
   }, [items, itemId]);
 
   useEffect(() => {
-    const foundSetting = selectSettings({ item, type: itemType })
-    setSettings(foundSetting)
-  }, [itemType, item])
+    const foundSetting = selectSettings({ item, type: itemType });
+    setSettings(foundSetting);
+  }, [itemType, item]);
 
   return (
     <Action

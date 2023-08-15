@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import Input from "../atoms/Input";
-import Button from "../atoms/Button";
+import { useState } from 'react';
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 interface NewMapFormValues {
   mapName: string;
@@ -12,8 +12,8 @@ interface ICreateNewMapForm {
 }
 
 export default function CreateNewMapForm({ handleChange }: ICreateNewMapForm) {
-  const [mapName, setMapName] = useState<string>("");
-  const [businessLine, setBusinessLine] = useState<string>("");
+  const [mapName, setMapName] = useState<string>('');
+  const [businessLine, setBusinessLine] = useState<string>('');
 
   function handlePress() {
     handleChange({ mapName, businessLine });

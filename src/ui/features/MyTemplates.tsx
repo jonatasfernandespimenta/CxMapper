@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import AddMap from "../components/molecules/AddMap";
-import MainLayout from "../layouts/MainLayout";
-import { useState } from "react";
-import TemplateBox from "../components/molecules/TemplateBox";
-import CreateTemplateModal from "../components/organisms/CreateTemplateModal";
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import AddMap from '../components/molecules/AddMap';
+import MainLayout from '../layouts/MainLayout';
+import TemplateBox from '../components/molecules/TemplateBox';
+import CreateTemplateModal from '../components/organisms/CreateTemplateModal';
 
 interface ITemplate {
   name: string
@@ -26,15 +26,18 @@ export default function MyTemplates() {
       name: 'Template Boas Vindas',
       description: 'Template de email para dar boas vindas ao cliente',
       id: new Date().toString(),
-      type: 'E-Mail'
-    }
+      type: 'E-Mail',
+    },
   ]);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const router = useRouter();
 
   function handleChange(values: NewTemplateFormValues) {
-    setTemplates([...templates, { ...values, id: new Date().getTime().toString(), name: values.templateName }])
+    setTemplates([
+      ...templates,
+      { ...values, id: new Date().getTime().toString(), name: values.templateName },
+    ]);
   }
 
   return (

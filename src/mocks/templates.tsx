@@ -1,4 +1,4 @@
-import { emailTemplates } from "./emailsTemplates"
+import { emailTemplates } from './emailsTemplates';
 
 interface ITemplate {
   id: string
@@ -12,21 +12,21 @@ interface ITemplate {
 
 export const templatesMock: ITemplate[] = [
   {
-    id: "1",
+    id: '1',
     code: emailTemplates[0],
-    dataset: "1",
-    subject: "1",
-    templateDescription: "Template de email para dar boas vindas ao cliente",
-    templateName: "Template Boas Vindas",
-    type: 'E-Mail'
+    dataset: '1',
+    subject: '1',
+    templateDescription: 'Template de email para dar boas vindas ao cliente',
+    templateName: 'Template Boas Vindas',
+    type: 'E-Mail',
   },
   {
-    id: "2",
-    code: "Olá {{ User.Nome }}, sejá bem vindo a plataforma",
-    dataset: "1",
-    subject: "1",
-    templateDescription: "Template de mensagem para dar boas vindas ao cliente",
-    templateName: "Template Boas Vindas SMS",
-    type: 'Text'
-  }
-]
+    id: '2',
+    code: 'Olá {{ User.Nome }}, sejá bem vindo a plataforma',
+    dataset: '1',
+    subject: '1',
+    templateDescription: 'Template de mensagem para dar boas vindas ao cliente',
+    templateName: 'Template Boas Vindas SMS',
+    type: 'Text',
+  },
+];

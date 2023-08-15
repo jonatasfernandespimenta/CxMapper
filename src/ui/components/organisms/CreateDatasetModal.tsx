@@ -1,4 +1,4 @@
-import CreateNewDatasetForm from "../molecules/CreateNewDatasetForm copy";
+import CreateNewDatasetForm from '../molecules/CreateNewDatasetForm copy';
 
 interface NewDatasetFormValues {
   datasetName: string;

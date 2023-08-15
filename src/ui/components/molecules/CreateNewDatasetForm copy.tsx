@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import Input from "../atoms/Input";
-import Button from "../atoms/Button";
+import { useState } from 'react';
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 interface NewDatasetFormValues {
   datasetName: string;
@@ -11,7 +11,7 @@ interface ICreateNewDatasetForm {
 }
 
 export default function CreateNewDatasetForm({ handleChange }: ICreateNewDatasetForm) {
-  const [datasetName, setDatasetName] = useState<string>("");
+  const [datasetName, setDatasetName] = useState<string>('');
 
   function handlePress() {
     handleChange({ datasetName });

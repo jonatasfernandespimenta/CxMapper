@@ -1,4 +1,4 @@
-import TemplateCreationContent from "../molecules/TemplateCreationContent";
+import TemplateCreationContent from '../molecules/TemplateCreationContent';
 
 interface ITemplateCreationInfo {
   dataset?: string
@@ -7,7 +7,9 @@ interface ITemplateCreationInfo {
   subject?: string
 }
 
-export default function TemplateCreationInfo({ templateName, templateDescription, subject, dataset }: ITemplateCreationInfo) {
+export default function TemplateCreationInfo({
+  templateName, templateDescription, subject, dataset,
+}: ITemplateCreationInfo) {
   return (
     <div>
       <div className="font-bold mb-4">
@@ -21,5 +23,5 @@ export default function TemplateCreationInfo({ templateName, templateDescription
         subject={subject}
       />
     </div>
-  )
+  );
 }

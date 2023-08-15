@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import AddAction from "@/ui/components/organisms/AddAction";
-import React, { useState } from "react";
-import { IActionProps, ItemTypes } from "@/@types/IActionProps";
-import Trigger from "@/ui/components/molecules/Trigger";
+import React, { useMemo, useState } from 'react';
+import AddAction from '@/ui/components/organisms/AddAction';
+import { IActionProps, ItemTypes } from '@/@types/IActionProps';
+import Trigger from '@/ui/components/molecules/Trigger';
 
 export interface IItem<T extends ItemTypes> extends IActionProps<T> {
   id: string;
@@ -24,7 +24,7 @@ interface IRulerContextProvider {
 }
 
 export const RulerContext = React.createContext<IRulerContextType>(
-  {} as IRulerContextType
+  {} as IRulerContextType,
 );
 
 export default function RulerContextProvider({
@@ -32,33 +32,31 @@ export default function RulerContextProvider({
 }: IRulerContextProvider) {
   const [items, setItems] = useState<IItem<ItemTypes>[]>([
     {
-      id: "trigger",
+      id: 'trigger',
       element: <Trigger itemId="trigger" />,
       props: null,
-      type: "trigger",
+      type: 'trigger',
       done: 0,
       failed: 0,
     },
     {
-      id: "add",
+      id: 'add',
       element: <AddAction />,
       props: null,
-      type: "add",
+      type: 'add',
       done: 0,
       failed: 0,
     },
   ]);
-  const [isAddActionMenuOpen, setIsAddActionMenuOpen] =
-    useState<boolean>(false);
+  const [isAddActionMenuOpen, setIsAddActionMenuOpen] = useState<boolean>(false);
+
+  const values = useMemo(() => ({
+    items, setItems, isAddActionMenuOpen, setIsAddActionMenuOpen,
+  }), [items, setItems, isAddActionMenuOpen, setIsAddActionMenuOpen]);
 
   return (
     <RulerContext.Provider
-      value={{
-        items,
-        setItems,
-        isAddActionMenuOpen,
-        setIsAddActionMenuOpen,
-      }}
+      value={values}
     >
       {children}
     </RulerContext.Provider>
@@ -69,7 +67,7 @@ export function useRulerData() {
   const context = React.useContext(RulerContext);
 
   if (context === undefined) {
-    throw new Error("useRulerData must be used within a RulerContextProvider");
+    throw new Error('useRulerData must be used within a RulerContextProvider');
   }
 
   return context;

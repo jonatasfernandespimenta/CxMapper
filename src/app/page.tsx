@@ -1,5 +1,4 @@
-import Login from "@/ui/features/Login";
-import MyMaps from "@/ui/features/MyMaps";
+import Login from '@/ui/features/Login';
 
 export default function Home() {
   return (

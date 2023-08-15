@@ -1,27 +1,27 @@
-"use client";
+'use client';
 
-import { IItem, useRulerData } from "@/contexts/RulerContext";
-import { useEffect, useState } from "react";
-import SelectSearchOrCreate from "../atoms/SelectSearchOrCreate";
-import Input from "../atoms/Input";
-import Select from "../atoms/Select";
+import { useEffect, useState } from 'react';
+import { IItem, useRulerData } from '@/contexts/RulerContext';
+import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate';
+import Input from '../atoms/Input';
+import Select from '../atoms/Select';
 
 interface IPdfSettings {
-  item: IItem<"pdf">;
+  item: IItem<'pdf'>;
 }
 
 export default function PdfSettings({ item }: IPdfSettings) {
   const { items, setItems } = useRulerData();
 
-  const [inputPath, setInputPath] = useState<string>("");
-  const [outputPath, setOutputPath] = useState<string>("");
-  const [outputName, setOutputName] = useState<string>("");
-  const [dataset, setDataset] = useState<string>("");
-  const [template, setTemplate] = useState<string>("");
-  const [actionDescription, setActionDescription] = useState<string>("");
+  const [inputPath, setInputPath] = useState<string>('');
+  const [outputPath, setOutputPath] = useState<string>('');
+  const [outputName, setOutputName] = useState<string>('');
+  const [dataset, setDataset] = useState<string>('');
+  const [template, setTemplate] = useState<string>('');
+  const [actionDescription, setActionDescription] = useState<string>('');
 
   function saveProps() {
-    const updatedItem: IItem<"pdf"> = {
+    const updatedItem: IItem<'pdf'> = {
       ...item,
       description: actionDescription,
       props: {
@@ -29,7 +29,7 @@ export default function PdfSettings({ item }: IPdfSettings) {
         dataset,
         inputPath,
         outputPath,
-        outputName
+        outputName,
       },
     };
 
@@ -42,12 +42,12 @@ export default function PdfSettings({ item }: IPdfSettings) {
   }
 
   useEffect(() => {
-    saveProps()
-  }, [template, dataset, inputPath, outputPath, outputName, actionDescription])
+    saveProps();
+  }, [template, dataset, inputPath, outputPath, outputName, actionDescription]);
 
   const optionList = [
-    { value: "1", label: "Welcome" },
-    { value: "2", label: "Newsletter" },
+    { value: '1', label: 'Welcome' },
+    { value: '2', label: 'Newsletter' },
   ];
 
   return (
