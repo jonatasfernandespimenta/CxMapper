@@ -66,6 +66,11 @@ export const actionsMenuOptions: IActionsMenuOption[] = [
   },
   {
     icon: <FaClock />,
+    text: 'Wait',
+    type: 'wait',
+  },
+  {
+    icon: <FaClock />,
     text: 'Timer',
     type: 'timer',
   },

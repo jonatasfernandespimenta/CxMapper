@@ -8,6 +8,7 @@ import PdfSettings from '../components/molecules/PdfSettings';
 import TriggerSettings from '../components/molecules/TriggerSettings';
 import TimerSettings from '../components/molecules/TimerSettings';
 import ScriptSettings from '../components/molecules/ScriptSettings';
+import WaitSettings from '../components/molecules/WaitSettings';
 
 interface ISelectSettings {
   type: ItemTypes;
@@ -25,6 +26,7 @@ export function selectSettings({ type, item }: ISelectSettings) {
     trigger: <TriggerSettings item={item} />,
     timer: <TimerSettings item={item} />,
     script: <ScriptSettings item={item} />,
+    wait: <WaitSettings item={item} />,
   };
 
   // @ts-ignore

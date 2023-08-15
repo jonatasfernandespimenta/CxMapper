@@ -10,6 +10,13 @@ export interface WhatsappProps {
   message: string;
 }
 
+export interface WaitProps {
+  timeWindow: string;
+  condition: string;
+  customer: string
+  prevActionId: string;
+}
+
 export interface ScriptProps {
   script: string
   action: string
@@ -60,6 +67,7 @@ export type ItemTypes =
   | 'sms'
   | 'add'
   | 'file_manager'
+  | 'wait'
   | 'pdf'
   | 'trigger'
   | 'timer'
@@ -83,7 +91,9 @@ type ItemWithType<T extends ItemTypes> = T extends 'condition'
                 ? TimerProps
                 : T extends 'script'
                   ? ScriptProps
-                  : never;
+                  : T extends 'wait'
+                    ? WaitProps
+                    : never;
 
 export interface IActionProps<T extends ItemTypes> {
   props: ItemWithType<T> | null;

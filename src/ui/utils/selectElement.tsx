@@ -1,5 +1,6 @@
 import ActionWrapper from '../components/organisms/ActionWrapper';
 import Condition from '../components/molecules/Condition';
+import Wait from '../components/molecules/Wait';
 
 interface ISelectElement {
   text: string;
@@ -18,6 +19,7 @@ export function selectElement({ text, itemId, icon }: ISelectElement) {
     Trigger: <ActionWrapper itemType="trigger" actionName={text} actionIcon={icon} itemId={itemId} />,
     Timer: <ActionWrapper itemType="timer" actionName={text} actionIcon={icon} itemId={itemId} />,
     Script: <ActionWrapper itemType="script" actionName={text} actionIcon={icon} itemId={itemId} />,
+    Wait: <Wait itemId={itemId} condition="" />,
   };
 
   // @ts-ignore
