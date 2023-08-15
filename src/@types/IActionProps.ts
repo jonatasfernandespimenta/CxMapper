@@ -13,7 +13,6 @@ export interface WhatsappProps {
 export interface WaitProps {
   timeWindow: string;
   condition: string;
-  customer: string
   prevActionId: string;
 }
 

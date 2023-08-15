@@ -5,7 +5,6 @@ import Input from '../atoms/Input';
 import Select from '../atoms/Select';
 import { WaitProps } from '@/@types/IActionProps';
 import Toggle from '../atoms/Toggle';
-import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate';
 import { IItem } from '@/contexts/RulerContext';
 
 interface IWaitForm {
@@ -19,13 +18,11 @@ export default function WaitForm({
 }: IWaitForm) {
   const [timeWindow, setTimeWindow] = useState<string>('');
   const [condition, setCondition] = useState<string>('');
-  const [customer, setCustomer] = useState<string>('');
-  const [prevActionId, setPrevActionId] = useState<string>('');
   const [isCronExpression, setIsCronExpression] = useState(false);
 
   const handleFormSubmit = () => {
     const data = {
-      timeWindow, condition, customer, prevActionId,
+      timeWindow, condition, prevActionId: prevItem.id,
     };
     if (handleChange) {
       handleChange(data);
@@ -34,7 +31,7 @@ export default function WaitForm({
 
   useEffect(() => {
     handleFormSubmit();
-  }, [timeWindow, condition, customer, prevActionId]);
+  }, [timeWindow, condition]);
 
   return (
     <div className="flex flex-col gap-2">
@@ -72,31 +69,13 @@ export default function WaitForm({
 
       <div>
         <p>To</p>
-        <div className="flex flex-row items-center">
-          <Select value={condition} onChange={(e) => setCondition(e.target.value)}>
-            <option value="">Customer open</option>
-            <option value="">Customer see</option>
-            <option value="">Customer receive</option>
-          </Select>
+        <Select value={condition} onChange={(e) => setCondition(e.target.value)}>
+          <option value="">Customer open</option>
+          <option value="">Customer see</option>
+          <option value="">Customer receive</option>
+        </Select>
 
-          <p>{prevItem.type === 'email' ? `Email ${prevItem.description ?? ''}` : `SMS ${prevItem.description ?? ''}`}</p>
-        </div>
-
-      </div>
-
-      <div>
-        <p>Customer ID</p>
-        <SelectSearchOrCreate
-          onChange={(e) => setCustomer(e?.value)}
-          options={[
-            { value: '6', label: 'User.ID' },
-            { value: '1', label: 'Email.Subject' },
-            { value: '2', label: 'User.Email' },
-            { value: '3', label: 'Email.Body' },
-            { value: '4', label: 'User.Phone' },
-            { value: '5', label: 'User.Name' },
-          ]}
-        />
+        <p>{prevItem.type === 'email' ? `Email ${prevItem.description ?? ''}` : `SMS ${prevItem.description ?? ''}`}</p>
       </div>
     </div>
   );
