@@ -8,6 +8,7 @@ import {
 } from 'chart.js';
 import MainLayout from '../layouts/MainLayout';
 import JobsIndicators from '../components/molecules/JobsIndicators';
+import JobsTable from '../components/molecules/JobsTable';
 
 ChartJS.register(
   ArcElement,
@@ -75,11 +76,11 @@ export const data02 = {
 export default function GovernanceScreen() {
   return (
     <MainLayout>
-      <div className="flex flex-col items-center mt-10">
+      <div className="flex flex-col items-center mt-10 gap-4">
         <JobsIndicators succeeded={200} failed={10} />
 
         <div className="flex flex-row gap-4">
-          <div className="shadow-md mt-4 pr-6 pl-6 rounded w-fit flex flex-col items-center">
+          <div className="shadow-md pr-6 pl-6 rounded w-fit flex flex-col items-center">
             <Pie
               data={data01}
               width={500}
@@ -88,7 +89,7 @@ export default function GovernanceScreen() {
             />
           </div>
 
-          <div className="shadow-md mt-4 pr-6 pl-6 rounded w-fit flex flex-col items-center justify-center">
+          <div className="shadow-md pr-6 pl-6 rounded w-fit flex flex-col items-center justify-center">
             <Bar
               options={options}
               data={data02}
@@ -98,6 +99,9 @@ export default function GovernanceScreen() {
           </div>
         </div>
 
+        <div className="w-[60%]">
+          <JobsTable />
+        </div>
       </div>
 
     </MainLayout>
