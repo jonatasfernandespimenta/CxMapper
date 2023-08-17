@@ -1,5 +1,3 @@
-'use client';
-
 import { MaterialReactTable, type MRT_ColumnDef } from 'material-react-table';
 import { useMemo } from 'react';
 import { governance, Job } from '@/mocks/governance';

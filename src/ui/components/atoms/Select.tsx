@@ -1,6 +1,6 @@
 interface ISelect {
-  value: any
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
+  value?: any
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void
   children: JSX.Element | JSX.Element[]
 }
 

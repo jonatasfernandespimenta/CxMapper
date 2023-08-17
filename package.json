@@ -51,6 +51,7 @@
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "eslint-config-standard-with-typescript": "^37.0.0",
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-promise": "^6.0.0"
