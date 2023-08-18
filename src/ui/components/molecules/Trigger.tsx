@@ -1,29 +1,29 @@
-'use client';
+'use client'
 
-import { FaPlay } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
-import Action from './Action';
-import { IItem, useRulerData } from '@/contexts/RulerContext';
-import TriggerSettings from './TriggerSettings';
+import { FaPlay } from 'react-icons/fa'
+import { useEffect, useState } from 'react'
+import Action from './Action'
+import { IItem, useRulerData } from '@/contexts/RulerContext'
+import TriggerSettings from './TriggerSettings'
 
 interface ITrigger {
-  itemId: string;
+  itemId: string
 }
 
 export default function Trigger({ itemId }: ITrigger) {
-  const { items } = useRulerData();
+  const { items } = useRulerData()
 
-  const [item, setItem] = useState<IItem<'trigger'>>({} as IItem<'trigger'>);
+  const [item, setItem] = useState<IItem<'trigger'>>({} as IItem<'trigger'>)
 
   useEffect(() => {
-    const foundItem = items.find((i) => i.id === itemId);
+    const foundItem = items.find((i) => i.id === itemId)
     if (foundItem) {
-      const itemType = foundItem.type;
+      const itemType = foundItem.type
 
-      const typedFoundItem: IItem<typeof itemType> = foundItem;
-      setItem(typedFoundItem);
+      const typedFoundItem: IItem<typeof itemType> = foundItem
+      setItem(typedFoundItem)
     }
-  }, [items, itemId]);
+  }, [items, itemId])
 
   return (
     <Action
@@ -36,5 +36,5 @@ export default function Trigger({ itemId }: ITrigger) {
     >
       <TriggerSettings item={item} />
     </Action>
-  );
+  )
 }
