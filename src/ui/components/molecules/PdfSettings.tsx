@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useEffect, useState } from 'react';
 import { IItem, useRulerData } from '@/contexts/RulerContext';
@@ -12,7 +12,7 @@ interface IPdfSettings {
 }
 
 export default function PdfSettings({ item }: IPdfSettings) {
-  const { items, setItems } = useRulerData()
+  const { items, setItems } = useRulerData();
 
   const [inputPath, setInputPath] = useState<string>('');
   const [outputPath, setOutputPath] = useState<string>('');
@@ -31,24 +31,24 @@ export default function PdfSettings({ item }: IPdfSettings) {
         outputPath,
         outputName,
       },
-    }
+    };
 
-    const updatedItems = [...items]
+    const updatedItems = [...items];
 
-    const itemIndex = updatedItems.findIndex((i) => i.id === item.id)
-    updatedItems[itemIndex] = updatedItem
+    const itemIndex = updatedItems.findIndex((i) => i.id === item.id);
+    updatedItems[itemIndex] = updatedItem;
 
-    setItems(updatedItems)
+    setItems(updatedItems);
   }
 
   useEffect(() => {
     saveProps();
   }, [template, inputPath, outputPath, outputName, actionDescription]);
-  
+
   const optionList = [
     { value: '1', label: 'Welcome' },
     { value: '2', label: 'Newsletter' },
-  ]
+  ];
 
   return (
     <div className="flex flex-col gap-4 text-black">
@@ -109,19 +109,23 @@ export default function PdfSettings({ item }: IPdfSettings) {
           </>
         ) : (
           <div>
-            <p>Source Box</p>
-            <Select>
-              <option>Email Files</option>
-              <option>Garbage</option>
-            </Select>
+            <div>
+              <p>Source Box</p>
+              <Select>
+                <option>Email Files</option>
+                <option>Garbage</option>
+              </Select>
+            </div>
 
-            <p>File File</p>
-            <Select>
-              <option>Welcome PDF</option>
-            </Select>
+            <div className="mt-4">
+              <p>File File</p>
+              <Select>
+                <option>Welcome PDF</option>
+              </Select>
+            </div>
           </div>
         )
       }
     </div>
-  )
+  );
 }
