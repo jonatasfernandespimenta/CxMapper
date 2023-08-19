@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { useEffect, useState } from 'react';
 import { IItem, useRulerData } from '@/contexts/RulerContext';
@@ -8,11 +8,11 @@ import Select from '../atoms/Select';
 import Toggle from '../atoms/Toggle';
 
 interface IPdfSettings {
-  item: IItem<'pdf'>;
+  item: IItem<'pdf'>
 }
 
 export default function PdfSettings({ item }: IPdfSettings) {
-  const { items, setItems } = useRulerData();
+  const { items, setItems } = useRulerData()
 
   const [inputPath, setInputPath] = useState<string>('');
   const [outputPath, setOutputPath] = useState<string>('');
@@ -31,24 +31,24 @@ export default function PdfSettings({ item }: IPdfSettings) {
         outputPath,
         outputName,
       },
-    };
+    }
 
-    const updatedItems = [...items];
+    const updatedItems = [...items]
 
-    const itemIndex = updatedItems.findIndex((i) => i.id === item.id);
-    updatedItems[itemIndex] = updatedItem;
+    const itemIndex = updatedItems.findIndex((i) => i.id === item.id)
+    updatedItems[itemIndex] = updatedItem
 
-    setItems(updatedItems);
+    setItems(updatedItems)
   }
 
   useEffect(() => {
     saveProps();
   }, [template, inputPath, outputPath, outputName, actionDescription]);
-
+  
   const optionList = [
     { value: '1', label: 'Welcome' },
     { value: '2', label: 'Newsletter' },
-  ];
+  ]
 
   return (
     <div className="flex flex-col gap-4 text-black">
@@ -123,5 +123,5 @@ export default function PdfSettings({ item }: IPdfSettings) {
         )
       }
     </div>
-  );
+  )
 }

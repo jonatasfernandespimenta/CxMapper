@@ -1,4 +1,4 @@
-import Dropdown from '../molecules/Dropdown';
+import Dropdown from '../molecules/Dropdown'
 
 export default function NavBar() {
   return (
@@ -9,7 +9,9 @@ export default function NavBar() {
 
       <Dropdown />
 
-      <p className="cursor-pointer hover:bg-green-600 p-2 rounded">Governance</p>
+      <p className="cursor-pointer hover:bg-green-600 p-2 rounded">
+        <a href="/governance/0">Insights</a>
+      </p>
     </nav>
-  );
+  )
 }
