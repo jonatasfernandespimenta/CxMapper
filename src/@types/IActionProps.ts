@@ -22,10 +22,10 @@ export interface ScriptProps {
 }
 
 export interface PdfProps {
-  template: string
-  inputPath: string
-  outputPath: string
-  outputName: string
+  template: string;
+  inputPath: string;
+  outputPath: string;
+  outputName: string;
 }
 
 export interface SmsProps {
