@@ -5,6 +5,7 @@ import { IItem, useRulerData } from '@/contexts/RulerContext';
 import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate';
 import Input from '../atoms/Input';
 import Select from '../atoms/Select';
+import Toggle from '../atoms/Toggle';
 
 interface IPdfSettings {
   item: IItem<'pdf'>;
@@ -16,9 +17,9 @@ export default function PdfSettings({ item }: IPdfSettings) {
   const [inputPath, setInputPath] = useState<string>('');
   const [outputPath, setOutputPath] = useState<string>('');
   const [outputName, setOutputName] = useState<string>('');
-  const [dataset, setDataset] = useState<string>('');
   const [template, setTemplate] = useState<string>('');
   const [actionDescription, setActionDescription] = useState<string>('');
+  const [isPdfExternal, setIsPdfExternal] = useState<boolean>(false);
 
   function saveProps() {
     const updatedItem: IItem<'pdf'> = {
@@ -26,7 +27,6 @@ export default function PdfSettings({ item }: IPdfSettings) {
       description: actionDescription,
       props: {
         template,
-        dataset,
         inputPath,
         outputPath,
         outputName,
@@ -43,7 +43,7 @@ export default function PdfSettings({ item }: IPdfSettings) {
 
   useEffect(() => {
     saveProps();
-  }, [template, dataset, inputPath, outputPath, outputName, actionDescription]);
+  }, [template, inputPath, outputPath, outputName, actionDescription]);
 
   const optionList = [
     { value: '1', label: 'Welcome' },
@@ -60,47 +60,68 @@ export default function PdfSettings({ item }: IPdfSettings) {
         />
       </div>
 
-      <div>
-        <p>Dataset</p>
-        <SelectSearchOrCreate
-          onChange={(e) => setDataset(e?.value)}
-          options={optionList}
+      <div className="mb-2">
+        <Toggle
+          option1="Generate"
+          option2="Existing"
+          value={isPdfExternal}
+          onChange={(e) => setIsPdfExternal(!isPdfExternal)}
         />
       </div>
 
-      <div>
-        <p>Input Path</p>
-        <Input
-          value={inputPath}
-          onChange={(e) => setInputPath(e.target.value)}
-        />
-      </div>
+      {
+        !isPdfExternal ? (
 
-      <div>
-        <p>Template</p>
-        <SelectSearchOrCreate
-          onChange={(e) => setTemplate(e?.value)}
-          options={optionList}
-        />
-      </div>
+          <>
+            <div>
+              <p>Input Path</p>
+              <Input
+                value={inputPath}
+                onChange={(e) => setInputPath(e.target.value)}
+              />
+            </div>
 
-      <div>
-        <p>Output Path</p>
-        <Select
-          value={outputPath}
-          onChange={(e) => setOutputPath(e.target.value)}
-        >
-          <option>Templates</option>
-        </Select>
-      </div>
+            <div>
+              <p>Template</p>
+              <SelectSearchOrCreate
+                onChange={(e) => setTemplate(e?.value)}
+                options={optionList}
+              />
+            </div>
 
-      <div>
-        <p>Output Name</p>
-        <Input
-          value={outputName}
-          onChange={(e) => setOutputName(e.target.value)}
-        />
-      </div>
+            <div>
+              <p>Output Path</p>
+              <Select
+                value={outputPath}
+                onChange={(e) => setOutputPath(e.target.value)}
+              >
+                <option>Templates</option>
+              </Select>
+            </div>
+
+            <div>
+              <p>Output Name</p>
+              <Input
+                value={outputName}
+                onChange={(e) => setOutputName(e.target.value)}
+              />
+            </div>
+          </>
+        ) : (
+          <div>
+            <p>Source Box</p>
+            <Select>
+              <option>Email Files</option>
+              <option>Garbage</option>
+            </Select>
+
+            <p>File File</p>
+            <Select>
+              <option>Welcome PDF</option>
+            </Select>
+          </div>
+        )
+      }
     </div>
   );
 }

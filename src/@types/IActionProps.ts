@@ -23,7 +23,6 @@ export interface ScriptProps {
 
 export interface PdfProps {
   template: string;
-  dataset: string;
   inputPath: string;
   outputPath: string;
   outputName: string;
