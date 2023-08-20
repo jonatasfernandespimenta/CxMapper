@@ -1,40 +1,52 @@
-'use client'
+'use client';
 
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-import AddMap from '../components/molecules/AddMap'
-import Map from '../components/molecules/Map'
-import MainLayout from '../layouts/MainLayout'
-import CreateMapModal from '../components/organisms/CreateMapModal'
-import Dropdown from '../components/molecules/Dropdown'
-import Input from '../components/atoms/Input'
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import AddMap from '../components/molecules/AddMap';
+import Map from '../components/molecules/Map';
+import MainLayout from '../layouts/MainLayout';
+import CreateMapModal from '../components/organisms/CreateMapModal';
+import Input from '../components/atoms/Input';
 
 interface NewMapFormValues {
   mapName: string
   businessLine: string
 }
 
+const myMaps = [
+  {
+    tag: 'Odonto',
+    name: 'Proposta',
+  },
+  {
+    tag: 'Odonto',
+    name: 'Kit de Boas Vindas',
+  },
+];
+
+interface IMap {
+  tag: string
+  name: string
+}
+
 export default function Maps() {
-  const [maps, setMaps] = useState([
-    <Map tag="Odonto" name="Proposta" key={0} />,
-    <Map tag="Odonto" name="Kit de Boas Vindas" key={1} />,
-  ])
+  const [maps, setMaps] = useState<IMap[]>(myMaps);
 
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
-  const [search, setSearch] = useState<string>('')
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>('');
 
-  const router = useRouter()
+  const router = useRouter();
 
   function handleChange(values: NewMapFormValues) {
     setMaps([
       ...maps,
-      <Map tag={values.businessLine} name={values.mapName} key={Date.now().toString()} />,
-    ])
-    setIsModalOpen(false)
+      { name: values.mapName, tag: values.businessLine },
+    ]);
+    setIsModalOpen(false);
   }
 
   function handleSearchChange(value: string) {
-    setSearch(value)
+    setSearch(value);
   }
 
   return (
@@ -59,14 +71,14 @@ export default function Maps() {
           <AddMap onClick={() => setIsModalOpen(true)} />
 
           {maps
-            .filter((map) => map.props.name.toLowerCase().includes(search))
+            .filter((map) => map.name.toLowerCase().includes(search))
             .map((map, idx) => (
               <div key={idx} onClick={() => router.push(`/ruler/${idx}`)}>
-                {map}
+                <Map tag={map.tag} name={map.name} />
               </div>
             ))}
         </div>
       </MainLayout>
     </>
-  )
+  );
 }
