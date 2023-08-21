@@ -6,6 +6,7 @@ import TextArea from '../atoms/TextArea'
 import Select from '../atoms/Select'
 import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate'
 import Input from '../atoms/Input'
+import { datasetOptions } from '@/mocks/datasetOptions'
 
 interface IEmailSettings {
   item: IItem<'whatsapp'>
@@ -56,9 +57,9 @@ export default function TextSettings({ item }: IEmailSettings) {
       <div>
         <p>To</p>
         <Select value={to} onChange={(e) => setTo(e.target.value)}>
-          <option value="Idade">User.Phone</option>
-          <option value="Nome">User.Email</option>
-          <option value="Idade">User.Name</option>
+          {datasetOptions.map(({ label, value }) => (
+            <option value={value}>{label}</option>
+          ))}
         </Select>
       </div>
 

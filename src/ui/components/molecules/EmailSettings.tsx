@@ -7,6 +7,7 @@ import TextArea from '../atoms/TextArea'
 import FileInput from '../atoms/FileInput'
 import Select from '../atoms/Select'
 import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate'
+import { datasetOptions } from '@/mocks/datasetOptions'
 
 interface IEmailSettings {
   item: IItem<'email'>
@@ -64,16 +65,7 @@ export default function EmailSettings({ item }: IEmailSettings) {
 
       <div>
         <p>To</p>
-        <SelectSearchOrCreate
-          onChange={(e) => setTo(e.value)}
-          options={[
-            { value: '1', label: 'Email.Subject' },
-            { value: '2', label: 'User.Email' },
-            { value: '3', label: 'Email.Body' },
-            { value: '4', label: 'User.Phone' },
-            { value: '5', label: 'User.Name' },
-          ]}
-        />
+        <SelectSearchOrCreate onChange={(e) => setTo(e.value)} options={datasetOptions} />
       </div>
 
       <div>
@@ -83,14 +75,7 @@ export default function EmailSettings({ item }: IEmailSettings) {
 
       <div>
         <p>Subject</p>
-        <SelectSearchOrCreate
-          onChange={(e) => setSubject(e.value)}
-          options={[
-            { value: '1', label: 'Email.Subject' },
-            { value: '2', label: 'User.Email' },
-            { value: '3', label: 'Email.Body' },
-          ]}
-        />
+        <SelectSearchOrCreate onChange={(e) => setSubject(e.value)} options={datasetOptions} />
       </div>
 
       <div>

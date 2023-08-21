@@ -1,14 +1,15 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import AddMap from '../components/molecules/AddMap';
-import MainLayout from '../layouts/MainLayout';
-import Input from '../components/atoms/Input';
-import CreateDatasetModal from '../components/organisms/CreateDatasetModal';
-import DatasetBox from '../components/atoms/DatasetBox';
+import { useState } from 'react'
+import AddMap from '../components/molecules/AddMap'
+import MainLayout from '../layouts/MainLayout'
+import Input from '../components/atoms/Input'
+import CreateDatasetModal from '../components/organisms/CreateDatasetModal'
+import DatasetBox from '../components/atoms/DatasetBox'
+import Link from 'next/link'
 
 interface NewDatasetFormValues {
-  datasetName: string;
+  datasetName: string
 }
 
 interface IDataset {
@@ -26,26 +27,23 @@ export default function Datasets() {
       name: 'Newsletter',
       id: new Date().toString(),
     },
-  ]);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [search, setSearch] = useState<string>('');
+  ])
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [search, setSearch] = useState<string>('')
 
   function handleChange(values: NewDatasetFormValues) {
-    setIsModalOpen(false);
-    setDatasets([...datasets, { name: values.datasetName, id: new Date().getTime().toString() }]);
+    setIsModalOpen(false)
+    setDatasets([...datasets, { name: values.datasetName, id: new Date().getTime().toString() }])
   }
 
   function handleSearchChange(value: string) {
-    setSearch(value);
+    setSearch(value)
   }
 
   return (
     <>
       {isModalOpen && (
-        <CreateDatasetModal
-          onClose={() => setIsModalOpen(false)}
-          handleChange={handleChange}
-        />
+        <CreateDatasetModal onClose={() => setIsModalOpen(false)} handleChange={handleChange} />
       )}
       <MainLayout>
         <div className="mb-6">
@@ -53,19 +51,27 @@ export default function Datasets() {
         </div>
 
         <div className="mb-6">
-          <Input placeholder="Search..." value={search} onChange={(e) => handleSearchChange(e.target.value)} />
+          <Input
+            placeholder="Search..."
+            value={search}
+            onChange={(e) => handleSearchChange(e.target.value)}
+          />
         </div>
 
         <div className="flex flex-row gap-4 flex-wrap">
           <AddMap onClick={() => setIsModalOpen(!isModalOpen)} />
 
-          {datasets.filter((box) => box.name.toLowerCase().includes(search)).map((box, idx) => (
-            <div className="flex flex-wrap gap-2" key={idx}>
-              <DatasetBox name={box.name} key={box.id} />
-            </div>
-          ))}
+          {datasets
+            .filter((box) => box.name.toLowerCase().includes(search))
+            .map((box, idx) => (
+              <Link href={'/datasets/0'} className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2" key={idx}>
+                  <DatasetBox name={box.name} key={box.id} />
+                </div>
+              </Link>
+            ))}
         </div>
       </MainLayout>
     </>
-  );
+  )
 }
