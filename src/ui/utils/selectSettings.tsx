@@ -26,7 +26,7 @@ export function selectSettings({ type, item }: ISelectSettings) {
     trigger: <TriggerSettings item={item} />,
     timer: <TimerSettings item={item} />,
     script: <ScriptSettings item={item} />,
-    wait: <WaitSettings item={item} />,
+    wait: <WaitSettings item={item} prevItem={item} />,
   };
 
   // @ts-ignore

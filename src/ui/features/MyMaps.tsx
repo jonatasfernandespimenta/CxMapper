@@ -7,22 +7,12 @@ import Map from '../components/molecules/Map';
 import MainLayout from '../layouts/MainLayout';
 import CreateMapModal from '../components/organisms/CreateMapModal';
 import Input from '../components/atoms/Input';
+import { myMaps } from '@/mocks/myMaps';
 
 interface NewMapFormValues {
   mapName: string
   businessLine: string
 }
-
-const myMaps = [
-  {
-    tag: 'Odonto',
-    name: 'Proposta',
-  },
-  {
-    tag: 'Odonto',
-    name: 'Kit de Boas Vindas',
-  },
-];
 
 interface IMap {
   tag: string
