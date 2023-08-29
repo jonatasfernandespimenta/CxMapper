@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from 'react'
-import { IItem, useRulerData } from '@/contexts/RulerContext'
-import Select from '../atoms/Select'
-import Input from '../atoms/Input'
-import Toggle from '../atoms/Toggle'
-import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate'
+import { useEffect, useState } from 'react';
+import { IItem, useRulerData } from '@/contexts/RulerContext';
+import Select from '../atoms/Select';
+import Input from '../atoms/Input';
+import Toggle from '../atoms/Toggle';
+import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate';
 
 interface ITriggerSettings {
   item: IItem<'trigger'>
@@ -14,16 +14,19 @@ interface ITriggerSettings {
 const optionList = [
   { value: '1', label: 'Welcome' },
   { value: '2', label: 'Newsletter' },
-]
+];
 
 export default function TriggerSettings({ item }: ITriggerSettings) {
-  const { items, setItems } = useRulerData()
+  const { items, setItems } = useRulerData();
 
-  const [triggerType, setTriggetType] = useState(false)
+  const [triggerType, setTriggetType] = useState(false);
 
-  const [type, setType] = useState<string>('')
-  const [dataset, setDataset] = useState<string | undefined>('')
-  const [expression, setExpression] = useState('')
+  const [type, setType] = useState<string>('File');
+  const [dataset, setDataset] = useState<string | undefined>('');
+  const [expression, setExpression] = useState('');
+
+  const [fileName, setFileName] = useState('');
+  const [startFileName, setStartFileName] = useState('');
 
   function saveProps() {
     const updatedItem: IItem<'trigger'> = {
@@ -31,19 +34,19 @@ export default function TriggerSettings({ item }: ITriggerSettings) {
       props: {
         type,
       },
-    }
+    };
 
-    const updatedItems = [...items]
+    const updatedItems = [...items];
 
-    const itemIndex = updatedItems.findIndex((i) => i.id === item.id)
-    updatedItems[itemIndex] = updatedItem
+    const itemIndex = updatedItems.findIndex((i) => i.id === item.id);
+    updatedItems[itemIndex] = updatedItem;
 
-    setItems(updatedItems)
+    setItems(updatedItems);
   }
 
   useEffect(() => {
-    saveProps()
-  }, [type, dataset])
+    saveProps();
+  }, [type, dataset]);
 
   return (
     <div className="flex flex-col gap-4 text-black">
@@ -85,10 +88,26 @@ export default function TriggerSettings({ item }: ITriggerSettings) {
         </div>
       )}
 
+      {
+        type === 'File' && (
+          <div>
+            <div>
+              <p>File name</p>
+              <Input value={fileName} onChange={(e) => setFileName(e.target.value)} />
+            </div>
+
+            <div>
+              <p>Start File Name</p>
+              <Input value={startFileName} onChange={(e) => setStartFileName(e.target.value)} />
+            </div>
+          </div>
+        )
+      }
+
       <div>
         <p>Dataset</p>
         <SelectSearchOrCreate onChange={(e) => setDataset(e?.value)} options={optionList} />
       </div>
     </div>
-  )
+  );
 }
