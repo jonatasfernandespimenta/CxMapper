@@ -47,8 +47,7 @@ export default function PdfSettings({ item }: IPdfSettings) {
   }, [template, inputPath, outputPath, outputName, actionDescription]);
 
   const optionList = [
-    { value: '1', label: 'Welcome' },
-    { value: '2', label: 'Newsletter' },
+    { value: '1', label: 'Boas-Vindas Odonto PME' },
   ];
 
   return (

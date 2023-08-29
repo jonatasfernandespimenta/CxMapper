@@ -23,8 +23,8 @@ interface NewTemplateFormValues {
 export default function MyTemplates() {
   const [templates, setTemplates] = useState<ITemplate[]>([
     {
-      name: 'Template Boas Vindas',
-      description: 'Template de email para dar boas vindas ao cliente',
+      name: 'Boas-Vindas Odonto PM',
+      description: 'Kit de boas-vindas para novos clientes',
       id: new Date().toString(),
       type: 'E-Mail',
     },

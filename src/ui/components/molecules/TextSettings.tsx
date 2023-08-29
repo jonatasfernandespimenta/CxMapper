@@ -1,24 +1,24 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from 'react'
-import { IItem, useRulerData } from '@/contexts/RulerContext'
-import TextArea from '../atoms/TextArea'
-import Select from '../atoms/Select'
-import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate'
-import Input from '../atoms/Input'
-import { datasetOptions } from '@/mocks/datasetOptions'
+import { useEffect, useState } from 'react';
+import { IItem, useRulerData } from '@/contexts/RulerContext';
+import TextArea from '../atoms/TextArea';
+import Select from '../atoms/Select';
+import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate';
+import Input from '../atoms/Input';
+import { datasetOptions } from '@/mocks/datasetOptions';
 
 interface IEmailSettings {
   item: IItem<'whatsapp'>
 }
 
 export default function TextSettings({ item }: IEmailSettings) {
-  const { items, setItems } = useRulerData()
+  const { items, setItems } = useRulerData();
 
-  const [to, setTo] = useState<string>('')
-  const [message, setMessage] = useState<string>('')
-  const [template, setTemplate] = useState<string | undefined>('')
-  const [actionDescription, setActionDescription] = useState<string>('')
+  const [to, setTo] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
+  const [template, setTemplate] = useState<string | undefined>('');
+  const [actionDescription, setActionDescription] = useState<string>('');
 
   function saveProps() {
     const updatedItem: IItem<'whatsapp'> = {
@@ -28,24 +28,23 @@ export default function TextSettings({ item }: IEmailSettings) {
         number: to,
         message,
       },
-    }
+    };
 
-    const updatedItems = [...items]
+    const updatedItems = [...items];
 
-    const itemIndex = updatedItems.findIndex((i) => i.id === item.id)
-    updatedItems[itemIndex] = updatedItem
+    const itemIndex = updatedItems.findIndex((i) => i.id === item.id);
+    updatedItems[itemIndex] = updatedItem;
 
-    setItems(updatedItems)
+    setItems(updatedItems);
   }
 
   useEffect(() => {
-    saveProps()
-  }, [to, message, template, actionDescription])
+    saveProps();
+  }, [to, message, template, actionDescription]);
 
   const optionList = [
-    { value: '1', label: 'Welcome' },
-    { value: '2', label: 'Newsletter' },
-  ]
+    { value: '1', label: 'Boas-Vindas Odonto PME' },
+  ];
 
   return (
     <div className="flex flex-col gap-4 text-black">
@@ -73,5 +72,5 @@ export default function TextSettings({ item }: IEmailSettings) {
         <TextArea value={message} onChange={(e) => setMessage(e.target.value)} />
       </div>
     </div>
-  )
+  );
 }

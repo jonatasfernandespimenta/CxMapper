@@ -16,8 +16,8 @@ export const templatesMock: ITemplate[] = [
     code: emailTemplates[0],
     dataset: '1',
     subject: '1',
-    templateDescription: 'Boas-Vindas Odonto PME',
-    templateName: 'Kit de boas-vindas para novos clientes',
+    templateName: 'Boas-Vindas Odonto PME',
+    templateDescription: 'Kit de boas-vindas para novos clientes',
     type: 'E-Mail',
   },
   {

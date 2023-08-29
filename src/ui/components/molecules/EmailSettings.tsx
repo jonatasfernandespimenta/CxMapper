@@ -15,8 +15,7 @@ interface IEmailSettings {
 }
 
 const optionList = [
-  { value: '1', label: 'Welcome' },
-  { value: '2', label: 'Newsletter' },
+  { value: '1', label: 'Boas-Vindas Odonto PME' },
 ];
 
 export default function EmailSettings({ item }: IEmailSettings) {
