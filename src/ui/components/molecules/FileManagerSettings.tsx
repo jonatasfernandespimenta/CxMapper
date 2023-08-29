@@ -5,6 +5,7 @@ import { IItem, useRulerData } from '@/contexts/RulerContext';
 import Select from '../atoms/Select';
 import Input from '../atoms/Input';
 import MySelect from '../atoms/MySelect';
+import { boxes } from '@/mocks/boxes';
 
 interface IFileManagerSettings {
   item: IItem<'file_manager'>;
@@ -70,16 +71,16 @@ export default function FileManagerSettings({ item }: IFileManagerSettings) {
       <div>
         <p>From</p>
         <Select value={from} onChange={(e) => setFrom(e.target.value)}>
-          <option value="Nome">Images</option>
-          <option value="Idade">Files</option>
+          {boxes.map((box) => (
+            <option>{box.name}</option>
+          ))}
         </Select>
       </div>
 
       <div>
         <p>File</p>
         <Select value={file} onChange={(e) => setFile(e.target.value)}>
-          <option value="Nome">image.jpg</option>
-          <option value="Idade">file.pdf</option>
+          <option>Email Attachment.pdf</option>
         </Select>
       </div>
 
@@ -87,8 +88,9 @@ export default function FileManagerSettings({ item }: IFileManagerSettings) {
         <div>
           <p>To</p>
           <Select value={to} onChange={(e) => setTo(e.target.value)}>
-            <option value="Nome">Images</option>
-            <option value="Idade">Files</option>
+            {boxes.map((box) => (
+              <option>{box.name}</option>
+            ))}
           </Select>
         </div>
       )}

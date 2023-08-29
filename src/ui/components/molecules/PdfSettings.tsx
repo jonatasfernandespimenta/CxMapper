@@ -6,6 +6,7 @@ import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate';
 import Input from '../atoms/Input';
 import Select from '../atoms/Select';
 import Toggle from '../atoms/Toggle';
+import { boxes } from '@/mocks/boxes';
 
 interface IPdfSettings {
   item: IItem<'pdf'>
@@ -95,7 +96,9 @@ export default function PdfSettings({ item }: IPdfSettings) {
                 value={outputPath}
                 onChange={(e) => setOutputPath(e.target.value)}
               >
-                <option>Templates</option>
+                {boxes.map((box) => (
+                  <option>{box.name}</option>
+                ))}
               </Select>
             </div>
 
@@ -112,8 +115,9 @@ export default function PdfSettings({ item }: IPdfSettings) {
             <div>
               <p>Source Box</p>
               <Select>
-                <option>Email Files</option>
-                <option>Garbage</option>
+                {boxes.map((box) => (
+                  <option value={box.id}>{box.name}</option>
+                ))}
               </Select>
             </div>
 

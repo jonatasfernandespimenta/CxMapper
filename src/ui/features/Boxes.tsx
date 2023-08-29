@@ -7,6 +7,8 @@ import FolderBox from '../components/atoms/FolderBox';
 import CreateBoxModal from '../components/organisms/CreateBoxModal';
 import Input from '../components/atoms/Input';
 
+import { boxes as mockBoxes } from '@/mocks/boxes';
+
 interface NewBoxFormValues {
   boxName: string;
 }
@@ -17,16 +19,7 @@ interface IBox {
 }
 
 export default function Boxes() {
-  const [boxes, setBoxes] = useState<IBox[]>([
-    {
-      name: 'Email Files',
-      id: new Date().toString(),
-    },
-    {
-      name: 'Garbage',
-      id: new Date().toString(),
-    },
-  ]);
+  const [boxes, setBoxes] = useState<IBox[]>(mockBoxes);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [search, setSearch] = useState<string>('');
 

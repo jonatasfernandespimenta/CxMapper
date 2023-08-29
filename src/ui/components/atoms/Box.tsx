@@ -22,7 +22,7 @@ export default function Box({
         rounded-md 
         border-${borderStyle === 'solid' ? '[1px]' : '2'} 
         border-${borderStyle} 
-        w-52 
+        w-56 
         cursor-pointer 
         ${className}
       `}

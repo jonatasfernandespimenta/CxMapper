@@ -1,10 +1,23 @@
 'use client';
 
 import { FaChevronRight } from 'react-icons/fa';
-import { useRulerData } from '@/contexts/RulerContext';
+import { useEffect } from 'react';
+import { IItem, useRulerData } from '@/contexts/RulerContext';
+import { ItemTypes } from '@/@types/IActionProps';
 
-export default function Ruler({ ruleId }: any) {
+interface IRuler {
+  rulerItems?: IItem<ItemTypes>[]
+  ruleId?: string
+}
+
+export default function Ruler({ rulerItems, ruleId }: IRuler) {
   const { items, setItems } = useRulerData();
+
+  useEffect(() => {
+    if (rulerItems) {
+      setItems(rulerItems);
+    }
+  }, []);
 
   return (
     <div className="flex flex-row mr-40 mb-40">

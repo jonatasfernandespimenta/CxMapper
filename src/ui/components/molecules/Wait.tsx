@@ -6,13 +6,15 @@ import Rule from '../organisms/Rule';
 import Action from './Action';
 import { IItem, useRulerData } from '@/contexts/RulerContext';
 import WaitSettings from './WaitSettings';
+import { ItemTypes } from '@/@types/IActionProps';
 
 interface IWait {
   condition: string;
   itemId: string;
+  rulerItems?: IItem<ItemTypes>[]
 }
 
-export default function Wait({ condition, itemId }: IWait) {
+export default function Wait({ condition, itemId, rulerItems }: IWait) {
   const { items } = useRulerData();
 
   const [item, setItem] = useState<IItem<'wait'>>(
@@ -49,7 +51,7 @@ export default function Wait({ condition, itemId }: IWait) {
         <div className="w-1 h-28 bg-green-500 rounded-lg -mb-1" />
 
         <div className="flex items-center justify-center flex-col">
-          <Rule />
+          <Rule rulerItems={rulerItems} />
         </div>
       </div>
     </div>

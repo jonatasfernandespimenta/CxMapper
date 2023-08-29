@@ -8,6 +8,7 @@ import MainLayout from '../layouts/MainLayout';
 import CreateMapModal from '../components/organisms/CreateMapModal';
 import Input from '../components/atoms/Input';
 import { myMaps } from '@/mocks/myMaps';
+import { ApprovalStatusEnum } from '@/@types/ApprovalStatusEnum';
 
 interface NewMapFormValues {
   mapName: string
@@ -17,6 +18,12 @@ interface NewMapFormValues {
 interface IMap {
   tag: string
   name: string
+  approvalStatus: ApprovalStatusEnum
+  createdAt: string
+  createdBy: string
+  approvedAt: string
+  approvedBy: string
+  id: string
 }
 
 export default function Maps() {
@@ -30,7 +37,16 @@ export default function Maps() {
   function handleChange(values: NewMapFormValues) {
     setMaps([
       ...maps,
-      { name: values.mapName, tag: values.businessLine },
+      {
+        name: values.mapName,
+        tag: values.businessLine,
+        approvalStatus: ApprovalStatusEnum.PENDING,
+        approvedAt: '',
+        approvedBy: '',
+        createdAt: new Date().toDateString(),
+        createdBy: 'Jonatas Fernandes',
+        id: 'jsdfo-fdsdf-asdd',
+      },
     ]);
     setIsModalOpen(false);
   }
@@ -63,8 +79,16 @@ export default function Maps() {
           {maps
             .filter((map) => map.name.toLowerCase().includes(search))
             .map((map, idx) => (
-              <div key={idx} onClick={() => router.push(`/ruler/${idx}`)}>
-                <Map tag={map.tag} name={map.name} />
+              <div key={idx} onClick={() => router.push(`/ruler/${map.id}`)}>
+                <Map
+                  tag={map.tag}
+                  name={map.name}
+                  approvalStatus={map.approvalStatus}
+                  createdBy={map.createdBy}
+                  createdAt={map.createdAt}
+                  approvedBy={map.approvedBy}
+                  approvedAt={map.approvedAt}
+                />
               </div>
             ))}
         </div>

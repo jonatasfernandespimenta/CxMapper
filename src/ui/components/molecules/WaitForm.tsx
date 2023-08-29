@@ -75,7 +75,14 @@ export default function WaitForm({
           <option value="">Customer receive</option>
         </Select>
 
-        <p>{prevItem.type === 'email' ? `Email ${prevItem.description ?? ''}` : `SMS ${prevItem.description ?? ''}`}</p>
+        {
+          prevItem && <p>{prevItem.type === 'email' ? 'Email' : 'SMS'}</p>
+        }
+
+        {
+          !prevItem && <p>Email</p>
+        }
+
       </div>
     </div>
   );

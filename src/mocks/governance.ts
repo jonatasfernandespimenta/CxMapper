@@ -37,7 +37,7 @@ export const governance = {
         {
           id: '2345-234234-4235',
           status: 'executed',
-          timestamp: 1692275736870,
+          timestamp: 'Mon Aug 28 2023 13:12:44',
           actionType: 'Send Email',
           customerId: 'sdfhksdf-4345-sdfsf',
           channel: 'EMAIL',
@@ -46,7 +46,7 @@ export const governance = {
         {
           id: 'jifds8f-3454353-fdsff',
           status: 'executed',
-          timestamp: 14557835736870,
+          timestamp: 'Mon Aug 28 2023 13:12:44',
           actionType: 'Send Email',
           customerId: 'bjud8-dj39-glao',
           channel: 'EMAIL',
@@ -55,7 +55,7 @@ export const governance = {
         {
           id: 'jfue-4928-fj58',
           status: 'failed',
-          timestamp: 1692385406870,
+          timestamp: 'Mon Aug 28 2023 13:12:44',
           actionType: 'Send Sms',
           customerId: 'asd9-2349-49fsd',
           channel: 'SMS',
@@ -64,7 +64,7 @@ export const governance = {
         {
           id: 'di39-fia3-4dia',
           status: 'executed',
-          timestamp: 4321275736870,
+          timestamp: 'Mon Aug 28 2023 13:12:44',
           actionType: 'Send Email',
           customerId: 'd93k-dampe-riw9',
           channel: 'EMAIL',

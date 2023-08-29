@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-'use client'
+'use client';
 
-import { useState } from 'react'
+import { useState } from 'react';
 
 export default function Dropdown() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
@@ -36,9 +36,8 @@ export default function Dropdown() {
 
       <div
         id="dropdown"
-        className={`z-50 absolute ${
-          !isOpen && 'hidden'
-        } bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
+        className={`z-50 absolute ${!isOpen && 'hidden'
+          } bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
       >
         <ul
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -58,6 +57,22 @@ export default function Dropdown() {
               className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Business Lines
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              Integrations
+            </a>
+          </li>
+          <li>
+            <a
+              href="/approvements"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              Approvals
             </a>
           </li>
           <li>
@@ -119,5 +134,5 @@ export default function Dropdown() {
         </ul>
       </div>
     </div>
-  )
+  );
 }

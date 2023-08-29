@@ -11,6 +11,11 @@ export default function JobsTable() {
         size: 150,
       },
       {
+        accessorKey: 'customerId',
+        header: 'Customer',
+        size: 200,
+      },
+      {
         accessorKey: 'actionType',
         header: 'Action Type',
         size: 150,
@@ -19,11 +24,6 @@ export default function JobsTable() {
         accessorKey: 'channel',
         header: 'Channel',
         size: 150,
-      },
-      {
-        accessorKey: 'customerId',
-        header: 'Customer',
-        size: 200,
       },
       {
         accessorKey: 'resultStatus',

@@ -1,10 +1,16 @@
-import RulerContextProvider from '@/contexts/RulerContext';
+import RulerContextProvider, { IItem } from '@/contexts/RulerContext';
 import Ruler from './Ruler';
+import { rules } from '@/mocks/rules';
+import { ItemTypes } from '@/@types/IActionProps';
 
-export default function Rule() {
+interface IRuler {
+  rulerItems?: IItem<ItemTypes>[]
+}
+
+export default function Rule({ rulerItems }: IRuler) {
   return (
     <RulerContextProvider>
-      <Ruler />
+      <Ruler rulerItems={rulerItems} />
     </RulerContextProvider>
   );
 }

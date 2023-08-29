@@ -1,13 +1,14 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from 'react'
-import { IItem, useRulerData } from '@/contexts/RulerContext'
-import Input from '../atoms/Input'
-import TextArea from '../atoms/TextArea'
-import FileInput from '../atoms/FileInput'
-import Select from '../atoms/Select'
-import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate'
-import { datasetOptions } from '@/mocks/datasetOptions'
+import { useEffect, useState } from 'react';
+import { IItem, useRulerData } from '@/contexts/RulerContext';
+import Input from '../atoms/Input';
+import TextArea from '../atoms/TextArea';
+import FileInput from '../atoms/FileInput';
+import Select from '../atoms/Select';
+import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate';
+import { datasetOptions } from '@/mocks/datasetOptions';
+import { boxes } from '@/mocks/boxes';
 
 interface IEmailSettings {
   item: IItem<'email'>
@@ -16,18 +17,18 @@ interface IEmailSettings {
 const optionList = [
   { value: '1', label: 'Welcome' },
   { value: '2', label: 'Newsletter' },
-]
+];
 
 export default function EmailSettings({ item }: IEmailSettings) {
-  const { items, setItems } = useRulerData()
+  const { items, setItems } = useRulerData();
 
-  const [to, setTo] = useState<string>('')
-  const [subject, setSubject] = useState<string>(item.props?.subject || '')
-  const [message, setMessage] = useState<string>('')
-  const [attachment, setAttachment] = useState<string>()
-  const [template, setTemplate] = useState<string | undefined>('')
-  const [actionDescription, setActionDescription] = useState<string>('')
-  const [provider, setProvider] = useState<string>('')
+  const [to, setTo] = useState<string>('');
+  const [subject, setSubject] = useState<string>(item.props?.subject || '');
+  const [message, setMessage] = useState<string>('');
+  const [attachment, setAttachment] = useState<string>();
+  const [template, setTemplate] = useState<string | undefined>('');
+  const [actionDescription, setActionDescription] = useState<string>('');
+  const [provider, setProvider] = useState<string>('');
 
   function saveProps() {
     const updatedItem: IItem<'email'> = {
@@ -42,19 +43,19 @@ export default function EmailSettings({ item }: IEmailSettings) {
         templateId: template ?? '',
         providerId: provider,
       },
-    }
+    };
 
-    const updatedItems = [...items]
+    const updatedItems = [...items];
 
-    const itemIndex = updatedItems.findIndex((i) => i.id === item.id)
-    updatedItems[itemIndex] = updatedItem
+    const itemIndex = updatedItems.findIndex((i) => i.id === item.id);
+    updatedItems[itemIndex] = updatedItem;
 
-    setItems(updatedItems)
+    setItems(updatedItems);
   }
 
   useEffect(() => {
-    saveProps()
-  }, [to, subject, message, attachment, template, actionDescription])
+    saveProps();
+  }, [to, subject, message, attachment, template, actionDescription]);
 
   return (
     <div className="flex flex-col gap-4 text-black">
@@ -70,7 +71,7 @@ export default function EmailSettings({ item }: IEmailSettings) {
 
       <div>
         <p>Template</p>
-        <SelectSearchOrCreate onChange={(e) => setTemplate(e?.value)} options={optionList} />
+        <SelectSearchOrCreate goTo="/templates" onChange={(e) => setTemplate(e?.value)} options={optionList} />
       </div>
 
       <div>
@@ -104,10 +105,13 @@ export default function EmailSettings({ item }: IEmailSettings) {
       <div>
         <p>Box</p>
         <Select value={to} onChange={(e) => setTo(e.target.value)}>
-          <option value="Nome">Email Files</option>
-          <option value="Idade">Garbage</option>
+          {
+            boxes.map((box) => (
+              <option value={box.id}>{box.name}</option>
+            ))
+          }
         </Select>
       </div>
     </div>
-  )
+  );
 }
