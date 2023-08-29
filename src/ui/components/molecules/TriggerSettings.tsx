@@ -6,14 +6,14 @@ import Select from '../atoms/Select';
 import Input from '../atoms/Input';
 import Toggle from '../atoms/Toggle';
 import SelectSearchOrCreate from '../atoms/SelectSearchOrCreate';
+import { boxes } from '@/mocks/boxes';
 
 interface ITriggerSettings {
   item: IItem<'trigger'>
 }
 
 const optionList = [
-  { value: '1', label: 'Welcome' },
-  { value: '2', label: 'Newsletter' },
+  { value: '1', label: 'Clientes' },
 ];
 
 export default function TriggerSettings({ item }: ITriggerSettings) {
@@ -93,12 +93,12 @@ export default function TriggerSettings({ item }: ITriggerSettings) {
           <div>
             <div>
               <p>File name</p>
-              <Input value={fileName} onChange={(e) => setFileName(e.target.value)} />
+              <Input value="dados.json" onChange={(e) => setFileName(e.target.value)} />
             </div>
 
             <div>
               <p>Start File Name</p>
-              <Input value={startFileName} onChange={(e) => setStartFileName(e.target.value)} />
+              <Input value="dados.json.start" onChange={(e) => setStartFileName(e.target.value)} />
             </div>
           </div>
         )
@@ -106,7 +106,18 @@ export default function TriggerSettings({ item }: ITriggerSettings) {
 
       <div>
         <p>Dataset</p>
-        <SelectSearchOrCreate onChange={(e) => setDataset(e?.value)} options={optionList} />
+        <Select>
+          <option>Clientes</option>
+        </Select>
+      </div>
+
+      <div>
+        <p>Box</p>
+        <Select>
+          {boxes.map((box) => (
+            <option>{box.name}</option>
+          ))}
+        </Select>
       </div>
     </div>
   );

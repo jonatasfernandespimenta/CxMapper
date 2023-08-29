@@ -58,7 +58,7 @@ export default function TemplateCreationContent(props: ITemplateCreationContent)
               <p>Subject</p>
               <SelectSearchOrCreate
                 value={subject}
-                onChange={(e) => setSubject(e.value)}
+                onChange={(e) => setSubject(e)}
                 options={datasetOptions}
               />
             </div>
@@ -82,6 +82,11 @@ export default function TemplateCreationContent(props: ITemplateCreationContent)
                   { value: '1', label: 'Boas-Vindas Odonto PME' },
                 ]}
               />
+            </div>
+
+            <div>
+              <p>Variables</p>
+              <SelectSearchOrCreate options={datasetOptions} />
             </div>
           </div>
         </div>

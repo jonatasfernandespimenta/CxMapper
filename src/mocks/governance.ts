@@ -11,20 +11,12 @@ enum RESULTSTATUS {
 export interface Job {
   id: string;
   status: string;
-  timestamp: number;
+  timestamp: string;
   actionType: string;
   customerId: string;
   channel: string;
   resultStatus: RESULTSTATUS;
-}
-
-interface MapItem {
-  name: string;
-  businessLine: string;
-  triggerType: string;
-  jobs: Job[];
-  succeeded: number;
-  failed: number;
+  opened: string
 }
 
 export const governance = {
@@ -39,36 +31,60 @@ export const governance = {
           status: 'executed',
           timestamp: 'Mon Aug 28 2023 13:12:44',
           actionType: 'Send Email',
-          customerId: 'sdfhksdf-4345-sdfsf',
+          customerId: 'WDA021',
           channel: 'EMAIL',
           resultStatus: RESULTSTATUS.DELIVERED,
+          opened: 'false',
         },
         {
           id: 'jifds8f-3454353-fdsff',
           status: 'executed',
-          timestamp: 'Mon Aug 28 2023 13:12:44',
+          timestamp: 'Mon Aug 28 2023 13:12:50',
           actionType: 'Send Email',
-          customerId: 'bjud8-dj39-glao',
+          customerId: 'JOP012',
           channel: 'EMAIL',
           resultStatus: RESULTSTATUS.DELIVERED,
+          opened: 'true',
         },
         {
           id: 'jfue-4928-fj58',
           status: 'failed',
-          timestamp: 'Mon Aug 28 2023 13:12:44',
-          actionType: 'Send Sms',
-          customerId: 'asd9-2349-49fsd',
-          channel: 'SMS',
+          timestamp: 'Mon Aug 28 2023 13:38:00',
+          actionType: 'Send Email',
+          customerId: 'REHYK087',
+          channel: 'EMAIL',
           resultStatus: RESULTSTATUS.NOT_DELIVERED,
+          opened: 'false',
         },
         {
-          id: 'di39-fia3-4dia',
+          id: '2345-234234-4235',
           status: 'executed',
-          timestamp: 'Mon Aug 28 2023 13:12:44',
+          timestamp: 'Mon Aug 29 2023 13:12:44',
           actionType: 'Send Email',
-          customerId: 'd93k-dampe-riw9',
+          customerId: 'WDA021',
           channel: 'EMAIL',
-          resultStatus: RESULTSTATUS.OPENED,
+          resultStatus: RESULTSTATUS.DELIVERED,
+          opened: 'false',
+        },
+        {
+          id: 'jifds8f-3454353-fdsff',
+          status: 'executed',
+          timestamp: 'Mon Aug 29 2023 13:40:50',
+          actionType: 'Send Email',
+          customerId: 'JOP012',
+          channel: 'EMAIL',
+          resultStatus: RESULTSTATUS.DELIVERED,
+          opened: 'true',
+        },
+        {
+          id: 'jfue-4928-fj58',
+          status: 'failed',
+          timestamp: 'Mon Aug 29 2023 13:40:00',
+          actionType: 'Send Email',
+          customerId: 'REHYK087',
+          channel: 'EMAIL',
+          resultStatus: RESULTSTATUS.NOT_DELIVERED,
+          opened: 'false',
         },
       ],
       succeeded: 0,

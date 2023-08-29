@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import AddMap from '../components/molecules/AddMap';
 import MainLayout from '../layouts/MainLayout';
 import Input from '../components/atoms/Input';
@@ -25,6 +26,8 @@ export default function Scripts() {
     setIsModalOpen(false);
     setScripts([...scripts, { name: values.scriptName, id: new Date().getTime().toString() }]);
   }
+
+  const router = useRouter();
 
   function handleSearchChange(value: string) {
     setSearch(value);
@@ -54,7 +57,7 @@ export default function Scripts() {
             .toLowerCase()
             .includes(search))
             .map((script, idx) => (
-              <div className="flex flex-wrap gap-2" key={idx}>
+              <div className="flex flex-wrap gap-2" onClick={() => router.push(`/scripts/${idx}`)} key={idx}>
                 <ScriptBox name={script.name} key={script.id} />
               </div>
             ))}

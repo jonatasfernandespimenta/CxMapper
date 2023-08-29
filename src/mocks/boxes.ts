@@ -1,10 +1,10 @@
 export const boxes = [
   {
     id: 'jasdio-9340-2asd',
-    name: 'cxmapper/BOX TRIGGER Kit Boas-Vindas Odonto PME',
+    name: 'cxmapper/DEMO TRACKER AND LANDING PAGES/',
   },
   {
     id: 'asdas-sffsa-adfas',
-    name: 'cxmapper/DEMO ATTACHMENTS Kit Boas-Vindas Odonto PME',
+    name: 'cxmapper/DEMO TRIGGER WELCOME KIT ODONTO/',
   },
 ];

@@ -36,7 +36,7 @@ export default function CreateNewTemplateForm({ handleChange }: ICreateNewTempla
       />
       <Select value={description} onChange={(e) => setType(e.target.value as typeof type)}>
         <option value="E-Mail">E-Mail</option>
-        <option value="Text">Text</option>
+        <option value="Text">SMS</option>
       </Select>
 
       <Button handlePress={handlePress} text="Create" />

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
+import Select from '../atoms/Select';
 
 interface NewBoxFormValues {
   boxName: string;
@@ -24,6 +25,22 @@ export default function CreateNewBoxForm({ handleChange }: ICreateNewBoxForm) {
         onChange={(e) => setBoxName(e.target.value)}
         placeholder="Box name"
       />
+
+      <div>
+        <Select>
+          <option>Google Bucket</option>
+          <option>AWS S3</option>
+          <option>Azure Buckets</option>
+          <option>Quadient ICM</option>
+        </Select>
+
+        <Input
+          placeholder="API Access Key"
+        />
+        <Input
+          placeholder="API Secret"
+        />
+      </div>
 
       <Button handlePress={handlePress} text="Create" />
     </div>

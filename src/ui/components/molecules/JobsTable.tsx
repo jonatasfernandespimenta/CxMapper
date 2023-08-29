@@ -31,6 +31,11 @@ export default function JobsTable() {
         size: 150,
       },
       {
+        accessorKey: 'opened',
+        header: 'Opened',
+        size: 150,
+      },
+      {
         accessorKey: 'timestamp',
         header: 'Timestamp',
         size: 150,

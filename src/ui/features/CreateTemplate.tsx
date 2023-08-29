@@ -25,9 +25,11 @@ export default function CreateTemplateScreen({ templateInfo, type }: ICreateTemp
         subject={templateInfo?.subject}
       />
 
-      {
-        type === 'E-Mail' ? (<HtmlEditor code={templateInfo?.code} />) : <textarea className="w-1/4 h-96" value={templateInfo?.code} />
-      }
+      <HtmlEditor code={templateInfo?.code} />
     </MainLayout>
   );
 }
+
+// {
+//   type === 'E-Mail' ? (<HtmlEditor code={templateInfo?.code} />) : <textarea className="w-1/4 h-96" value={templateInfo?.code} />
+// }

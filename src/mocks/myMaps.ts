@@ -18,7 +18,7 @@ export const myMaps = [
     approvalStatus: ApprovalStatusEnum.APPROVED,
     createdAt: 'Mon Aug 28 2023 13:16:37',
     createdBy: 'Jônatas Fernandes',
-    approvedAt: 'Mon Aug 28 2023 14:16:37',
+    approvedAt: 'Mon Aug 29 2023 21:30:37',
     approvedBy: "Weider D'Angelo",
   },
   {
@@ -34,7 +34,7 @@ export const myMaps = [
   {
     id: '4b28-473a-a332',
     tag: 'Odonto',
-    name: 'Extrato Imposto de Renda',
+    name: 'Extrato IR',
     approvalStatus: ApprovalStatusEnum.APPROVED,
     createdAt: 'Mon Aug 28 2023 13:16:37',
     createdBy: 'Jônatas Fernandes',
